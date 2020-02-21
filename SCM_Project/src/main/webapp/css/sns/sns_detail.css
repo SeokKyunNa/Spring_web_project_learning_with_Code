@@ -1,0 +1,272 @@
+
+#sns_re {
+	vertical-align: bottom;
+	margin: -5px;
+	width: 50px;
+	height: 50px;
+	display: block;
+	padding: 0px;
+	align: left;
+}
+a:visited , a{ color: black; text-decoration: none;}
+
+a:hover{
+	color:#c5d6ff;
+}
+
+.reply_del{
+	font-size: 9pt;
+	float:right;
+}
+
+.reply{
+
+font-family: 'Noto Sans KR', sans-serif;
+margin-top:0px;
+margin-bottom: 0px;
+}
+#sns_border{
+	border:1px solid #cdcdcd;
+	background-color: white;
+
+}
+#sns_top-menu>ul>li {
+	list-style: none;
+	float: left;
+}
+
+#replybody {
+	background-color: #f1f3f5;
+}
+
+.reply_user {
+	font-size: 8pt;
+	color: black;
+	font-weight: bold;
+}
+/* 작성자 썸네일 이미지 보이는 부분 */
+.reply_img {
+	float: left;
+	margin-right: 10px;
+	width:30px;
+	height: 30px;
+}
+.reply_pic{
+	width:30px;
+	height: 30px;
+}
+#sns_modify>ul>li {
+	list-style: none;
+	float: left;
+}
+
+#sns_top-bar {
+	/* height: 90px; */
+	background-color: #d3d3d3;
+}
+
+#sns_subject {
+	margin-left: 25px;
+	margin-top: 20px;
+	font-size: 16pt;
+	font-weight: bold;
+	color: #3d3d3d;
+	width: 600px;
+	border-bottom: 1px solid #c5d6ff;
+	padding: 0px 10px 10px 10px;
+}
+
+#sns_top-menu {
+	margin-left: 10px;
+	font-size: 10pt;
+	color: #595959;
+	border-bottom: 1px solid #c5d6ff;
+	padding: 0px 10px 3px 0px;
+	height: 25px;
+	width: 480px;
+	line-height: 25px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	
+}
+
+#sns_top-menu ul {
+	margin: 0px;
+	padding-left:20px;
+}
+
+
+#sns_content {
+	clear: both;
+	width: 600px;
+	margin-left: 25px;
+	padding: 15px 20px 30px 20px;
+	font-size: 12pt;
+	color: #3d3d3d;
+}
+
+
+#sns_content_li_date{
+	margin-left: 46%;
+	margin-top: 10px;
+}
+
+#sns_good{
+	float:right;
+	margin-right:30px;
+font-weight: bold;
+	font-size: 10pt;
+	color: #595959;
+	clear: both;
+	
+}
+
+#sns_source1 {
+	width: 600px;
+	margin-left: 25px;
+	padding: 15px 20px 50px 20px;
+	font-size: 12pt;
+	color: #3d3d3d;
+	border-bottom: 1px solid #c5d6ff;
+}
+
+#sns_modify {
+	margin-left: 10px;
+	font-size: 10pt;
+	color: #595959;
+	border-bottom: 1px solid #c5d6ff;
+	padding: 0px 10px 3px 0px;
+	height: 25px;
+	width: 480px;
+	line-height: 25px;
+	font-weight: bold;
+}
+
+#sns_modify ul {
+	margin: 0px;
+}
+
+#sns_modify li {
+	margin-right: 10px;
+}
+
+#sns_input-box {
+	margin-left: 25px;
+	font-size: 10pt;
+	color: #595959;
+	border-bottom: 1px solid #c5d6ff;
+	padding: 10px 10px 10px 20px;
+	width: 600px;
+	line-height: 25px;
+	font-weight: bold;
+}
+
+#sns_re_input {
+	width: 450px;
+	height: 20px;
+	border: 5px solid #c5d6ff;
+	outline: none;
+	padding: 3px 10px 3px 10px;
+}
+
+#sns_submit {
+	width: 70px;
+	height: 35px;
+	line-height: 30px;
+	font-weight: bold;
+	border: 0px;
+	margin-top: 3px;
+	background-color: #c5d6ff;
+}
+
+#sns_re-title {
+	margin-left: 5px;
+	font-size: 9pt;
+	font-weight: bold;
+	color: gray;
+	padding: 10px 0px 10px 0px;
+}
+
+#sns_re-content {
+	margin-left: 35px;
+	margin-bottom: 20px;
+}
+
+#sns_re-pic {
+	float: left;
+	width: 40px;
+	height: 40px;
+	background-color: #c6c6c6;
+	text-align: center;
+	line-height: 50px;
+}
+
+.user_pic{
+	vertical-align: bottom;
+}
+
+#sns_re-text {
+	font-size: 10pt;
+	color: #3d3d3d;
+	margin-left: 60px;
+}
+
+#sns_img-content {
+	margin: 10px 0px 10px 25px;
+}
+ .img1{
+ width:	455px;
+ height: 250px;
+ margin-left:10px;
+ margin-bottom:10px;
+ margin-top:10px;
+ }
+ 
+  .img2:FIRST-CHILD{
+ width:455px;
+  margin-left:0px;
+ margin-bottom:0px;
+ margin-top:10px;
+ height: 250px;
+ }
+ .img2{
+ width:455px;
+  margin-left:0px;
+ margin-bottom:10px;
+ margin-top:5px;
+ height: 250px;
+ }
+ 
+ .img3:FIRST-CHILD{
+   margin-left:10px;
+ margin-bottom:5px;
+ margin-top:10px;
+ width: 450px;
+ }
+ 
+ .img3{
+  margin-left:10px;
+ margin-bottom:10px;
+ margin-top:0px;
+  width:220px;
+ height:230px;
+ }
+ 
+ .img4{
+ margin-bottom:5px;
+ width:200px;
+ height:240px;
+ }
+ 
+
+#sns_border {
+	margin: 15px 0px 15px;
+}
+
+.count {
+	padding: 0px 10px 3px 300px;
+}
+#Preview img{
+	width: 100px;
+	height: 100px;
+}

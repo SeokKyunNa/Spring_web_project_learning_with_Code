@@ -1,0 +1,13 @@
+/*****************************/
+/* 여기는 footer 영역입니다. */
+/* footer 영역 공간 만들어 주기 */
+.qna_list_footer{
+	clear: both;
+	border-radius: 4px;
+	text-align: center;
+	height: 60px;
+	background-color: #4F4F4F;
+	color: white;
+	margin-top: 10px;
+	line-height: 60px;
+}

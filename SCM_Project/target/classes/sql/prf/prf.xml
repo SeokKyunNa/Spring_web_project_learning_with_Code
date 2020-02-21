@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="prf">
+
+	<!-- 프로필 등록-->
+    <update id="prf_update" parameterType="prfbean">
+    update PROFILE_TABLE set
+     	PROFILE_AGE=#{PROFILE_AGE},PROFILE_EDU=#{PROFILE_EDU},PROFILE_INTRO=#{PROFILE_INTRO},PROFILE_LANGU=#{PROFILE_LANGU},
+		PROFILE_INTEREST=#{PROFILE_INTEREST},PROFILE_CARRER=#{PROFILE_CARRER},PROFILE_LOCAL=#{PROFILE_LOCAL},
+		PROFILE_LISENCE=#{PROFILE_LISENCE},PROFILE_PIC=#{PROFILE_PIC,jdbcType=VARCHAR},PROFILE_BOOLEAN=#{PROFILE_BOOLEAN}
+		where PROFILE_ID=#{PROFILE_ID}
+    </update>
+ <!--프로필 보기  -->
+    <select id="prf_view" resultType="prfbean" parameterType="String">
+      select * from PROFILE_TABLE where PROFILE_ID = #{id}
+    </select>
+    
+    <!-- 프로필 이미지 가져오기 -->
+    <select id="prf_img_view" resultType="String" parameterType="String">
+    	select PROFILE_PIC from PROFILE_TABLE where PROFILE_ID = #{id}
+    </select>
+
+</mapper>

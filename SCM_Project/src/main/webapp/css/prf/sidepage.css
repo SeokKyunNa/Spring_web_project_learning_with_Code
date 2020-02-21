@@ -1,0 +1,127 @@
+		@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+		@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+		
+		body {
+			margin: 0;
+			font-family: Nanum Gothic, sans-serif;
+		}
+		
+		#profile-menu a {
+			text-decoration: none;
+			color: #4c4c4c;
+			cursor : pointer;
+		}
+		
+		#profile-menu a:hover {
+			text-decoration: none;
+			color: navy;
+			text-shadow: 0px 0px 1px #3397e2;
+		
+		}
+		
+		#profile-menu a:before {
+			content: '';
+			border: 4px outset transparent;
+			border-left: 4px solid #bbb;
+			display: inline-block;
+			margin-right: 10px;
+		}
+		
+		li {
+			list-style: none;
+		}
+		
+		#deco {
+			height: 100px;
+			width: 32px;
+			background-color: #3397e2;
+			margin-bottom: -52px;
+		}
+		
+		#profile-title {
+			font-family: Nanum Gothic, sans-serif;
+			font-weight: bold;
+			color: gray;
+			border-bottom: 1px solid silver;
+			padding-bottom: 20px;
+			width: 300px;
+		}
+		#profile-title #p-text{
+			color: white;
+			font-size: 40pt;
+		}
+		#profile-title #title-top {
+			color: #3397e2;
+			font-size: 30pt;
+		}
+		
+		#profile-title #title-bottom {
+			margin-left: 150px;
+			font-family: 'Jeju Gothic', sans-serif;
+		}
+		
+		#profile-menu {
+			font-weight: bold;
+			color: gray; margin-top: 30px;
+			padding-bottom: 40px;			
+		}
+		#profile-menu ul{
+			padding-left: 20px;
+		}
+		#profile-menu li {
+			margin: 5px 0px 15px 15px;
+			font-size: 11pt;
+		}
+		.arrow_box {
+			position: relative; text-align: center;
+			background: #3397e2;
+			border: 4px solid #8DC4FF;
+			border-radius: 7px; color: white;
+			font-family: 'Jeju Gothic', sans-serif;
+			height: 50px; line-height: 50px;
+			text-shadow: 2px 2px 2px #043468;
+			font-size: 14pt;
+		}
+		.arrow_box:after, .arrow_box:before {
+			top: 100%;
+			left: 50%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+		
+		.arrow_box:after {
+			border-color: rgba(136, 183, 213, 0);
+			border-top-color: #3397e2;
+			border-width: 15px;
+			margin-left: -15px;
+		}
+		.arrow_box:before {
+			border-color: rgba(194, 225, 245, 0);
+			border-top-color: #8DC4FF;
+			border-width: 21px;
+			margin-left: -21px;
+		}
+		#recruit-list a {
+			text-decoration: none;
+			color: #4c4c4c;
+		}
+		
+		#recruit-list a:hover {
+			text-decoration: none;
+			color: navy;
+			text-shadow: 0px 0px 1px #3397e2;
+		
+		}
+		#recruit-list ul{
+			padding-left: 0px;
+		}
+		#recruit-list li{
+			width: 250px;
+			border-bottom: 1px solid silver;
+			font-weight: bold; font-size: 11pt;
+			padding: 10px 0px 10px 0px;
+		}

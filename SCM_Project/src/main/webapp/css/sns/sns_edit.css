@@ -1,0 +1,31 @@
+#Preview img {
+	width: 100px;
+	height: 100px;
+	margin-left: 15px;
+}
+
+#Preview span {
+	margin: 10px;
+	color: #66696a;
+	font-weight: bold;
+	font-size:10pt;
+	border-bottom: 1px solid #c1c1c1;
+}
+
+.dvPreview span {
+	margin: 10px;
+	color: #66696a;
+	font-weight: bold;
+	border-bottom: 1px solid #c1c1c1;
+}
+
+#Preview {
+	margin-left: 15px;
+}
+
+.dvPreview {
+	margin-left: 15px;
+}
+#dvPreview{
+	width:490px;
+}

@@ -1,0 +1,88 @@
+a, form {
+	border: 0px;
+	padding: 0px;
+}
+#dvPreview img{
+	margin: 10px;
+}
+#dvPreview{
+	width:510px;
+	height:130px;
+	white-space:nowrap;
+	overflow:scroll;
+	overflow-y:hidden;
+}
+#myform {
+	margin-bottom: 20px;
+	width: 520px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border-radius: 7px;
+	border: 1px solid #3397e2;
+	background-color: #f1f3f5;
+}
+
+#title {
+	height: 35px;
+	line-height: 35px;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 8px;
+	font-family: nanumgothic, dotum;
+	color: white;
+	background-color: #bcbcbc;
+}
+
+#myform label {
+	display: block;
+	font-weight: bold;
+	text-align: right;
+	float: left;
+	font-family: nanumgothic, dotum;
+	color: #545454;
+}
+
+#write_body {
+	float: left;
+	font-size: 12px;
+	padding: 4px 2px;
+	width: 380px;
+	height: 250px;
+	margin: 10px 0px 10px 0px;
+	background-color: white;
+}
+
+table {
+	margin: 5px;
+}
+
+#submit {
+	margin-left: 190px;
+	border: 0px;
+	width: 80px;
+	height: 35px;
+	text-align: center;
+	line-height: 35px;
+	background-color: #3397e2;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: nanumgothic, dotum;
+}
+
+#cancle {
+	border: 0px;
+	width: 80px;
+	height: 35px;
+	text-align: center;
+	line-height: 35px;
+	background-color: #3397e2;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: nanumgothic, dotum;
+}
+
+#image_preview {
+	display: none;
+}

@@ -1,0 +1,173 @@
+
+	/* BODY 공백 처리 */
+	*{
+		color: #141823;
+		list-style: none;
+	}
+	body{
+		font-family: 'Noto Sans KR', sans-serif;
+		margin: 0px;
+		background-color: #e9eaed;
+		font-size: 10pt;
+	}
+	/* 메뉴 백그라운드 처리 */
+	.menu-background{
+		height: 150px; width: 100%;
+		background: #599eba;
+		background: -moz-linear-gradient(-45deg,  #599eba 0%, #e0eada 54%, #827bb4 100%);
+		background: -webkit-linear-gradient(-45deg,  #599eba 0%,#e0eada 54%,#827bb4 100%);
+		background: linear-gradient(135deg,  #599eba 0%,#e0eada 54%,#827bb4 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#599eba', endColorstr='#827bb4',GradientType=1 );
+	}
+	@media screen and (max-width:480px){
+		.menu-background{
+			height: 40px; width: 100%;
+			background: #599eba;
+			background: -moz-linear-gradient(-45deg,  #599eba 0%, #e0eada 54%, #827bb4 100%);
+			background: -webkit-linear-gradient(-45deg,  #599eba 0%,#e0eada 54%,#827bb4 100%);
+			background: linear-gradient(135deg,  #599eba 0%,#e0eada 54%,#827bb4 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#599eba', endColorstr='#827bb4',GradientType=1 );
+		}
+	}
+	.menu_fixed{
+		position: fixed;
+        top: 0px;
+        height: 40px;
+	}
+	
+	/* 메뉴 영역 사이즈와 가운데 정렬 처리 */
+	.menu-area{
+		margin: auto;
+		width: 960px; 
+		padding-top: 7px;
+	}
+	@media screen and (max-width:480px){
+		.menu-area{
+			margin: auto;
+			width: 100%;
+		}
+	}
+	/* 로고 들어가는 부분 */
+	.menu-logo{
+		float: left;
+	}
+	
+	.menu-search{
+		float: left;
+		padding: 0px 0px 0px 15px;
+	}
+	@media screen and (max-width:480px){
+		.menu-search{
+			float: left;
+			width: auto; 
+			text-align: center;
+		}
+	}
+	/* 검색창 select상자 */
+	.menu-select{
+		box-sizing : border-box;
+		height: 25px;
+		border: none;
+		font-size: 8pt;
+		background-color: #f5f8fb;
+		border-radius: 3px;
+		position : relative;
+	}
+	.menu-search-input{
+		box-sizing : border-box;
+		height: 25px; width: 220px;
+		border: none;
+		font-size: 9pt;
+		background-color: #f5f8fb;
+		outline: none;
+		padding: 0px 5px 0px 10px;
+		border-radius: 3px 0px 0px 3px;
+		margin-left: 5px;
+		position : relative;
+	}
+	.menu-search-button{
+		box-sizing : border-box;
+		height: 25px; width: 60px;
+		border: none;
+		font-size: 9pt;
+		background-color: #5781b5;
+		color: white;
+		font-weight: bold;
+		border-radius: 0px 3px 3px 0px;
+		cursor : pointer;
+		margin-left: -5px;
+		outline: none;
+		position : relative;
+	}
+	
+	/* 우측 메뉴 버튼 */
+	.menu-button{
+		float: right;
+	}
+	.menu-list{
+		float: left;
+	}
+	.menu-list ul{
+		margin: 3px 0px 0px 0px;
+	}
+	.menu-list li{
+		font-size: 10pt;
+		color: #564570;
+		font-weight: bold;
+		float: left;
+		margin-left: 10px;
+		cursor : pointer;
+	}
+	.menu-list li:hover{
+		color: white;
+		text-shadow :1px 1px 5px #575757;
+	}
+	@media screen and (max-width:480px){
+		.menu-list{
+			display: none;
+		}
+	}
+	
+	/* 마우스 오버시 드롭다운 메뉴 */
+	/* 드롭다운 메뉴 버튼 */
+	.drop-box{
+		float: right;
+		margin-top: 5px;
+		margin-left: 10px;
+	}
+	.drop-button{
+		width: 12px; height: 2px;
+		background-color: #564570;
+		margin-top: 2px;margin-bottom: 2px;
+		
+	}
+	.drop-bg{
+		/* border: 1px solid #564570; */
+		width: 20px; height: 18px;
+		border-radius: 3px;
+		padding: 1px 3px 1px 3px;
+		box-sizing : border-box;
+		text-align: center;
+		cursor : pointer;
+	}
+	.drop-bg:hover .drop-button{
+		background-color: white;
+	}
+	
+	/* 드롭다운 리스트 */
+	.drop-menu ul{
+		position: absolute;
+		padding: 10px 5px 10px 15px;
+		border-radius: 3px;
+		background-color: white;
+		margin-left: -100px;
+		margin-top: 10px;
+		width: 100px;
+		box-shadow :0px 0px 8px #575757;
+	}
+	.drop-menu li{
+		color: black;
+		text-shadow :none;
+	}
+	a{
+	text-decoration: none;}

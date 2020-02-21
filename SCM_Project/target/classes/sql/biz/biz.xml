@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Biz">
+
+	<!-- 채용공고 개수 구하기 -->
+	<select id="biz_getListCount" resultType="int">
+		select count(*) from
+		biz_board
+	</select>
+
+	<!-- 채용공고 목록 보기 -->
+	<select id="biz_getList" parameterType="java.util.Map"
+		resultType="bizbean">
+		select * from
+		(select rownum rnum, BIZ_NUM, BIZ_NAME, BIZ_USER,
+		BIZ_SUBJECT, BIZ_CONTENT, BIZ_ZIPCODE, BIZ_LOC_1, BIZ_OCC, BIZ_POSITION, BIZ_PATTERN,
+		BIZ_PAY, BIZ_EDUCATION, BIZ_CAREER, BIZ_FILE, BIZ_COUNT, 
+		BIZ_DATE, BIZ_EXPIRY_DATE, BIZ_PRF_IMG
+		from
+		(select * from
+		biz_board order by biz_num
+		desc))
+		where
+		rnum<![CDATA[>]]>=#{startrow}
+		and rnum<![CDATA[<]]>=#{endrow}
+	</select>
+	
+	<!-- 전체 목록에서 즐겨찾기한 게시물을 걸러내기 위한 sql -->
+	<select id="biz_getFavoriteList" parameterType="String" resultType="bizfavoritebean">
+		select biz_board_favorite.* from biz_board_favorite 
+		left outer join biz_board on biz_board_favorite.biz_num_favorite = biz_board.biz_num 
+		where biz_user_favorite = #{biz_user_favorite}
+	</select>
+
+	<!-- 내가 등록한 채용공고 개수 구하기 -->
+	<select id="biz_getMyListCount" parameterType="String" resultType="int">
+		select count(*) from
+		biz_board
+		where BIZ_USER=#{biz_user}
+	</select>
+	
+	<!-- 내가 등록한 채용공고 목록 보기 -->
+	<select id="biz_getMyList" parameterType="java.util.Map"
+		resultType="bizbean">
+		select * from
+		(select rownum rnum, BIZ_NUM, BIZ_NAME, BIZ_USER,
+		BIZ_SUBJECT, BIZ_CONTENT, BIZ_ZIPCODE, BIZ_LOC_1, BIZ_LOC_2, BIZ_OCC, BIZ_POSITION, BIZ_PATTERN,
+		BIZ_PAY, BIZ_EDUCATION, BIZ_CAREER, BIZ_FILE, BIZ_COUNT, 
+		BIZ_DATE, BIZ_EXPIRY_DATE
+		from
+		(select * from
+		biz_board where
+		BIZ_USER=#{biz_user} order by biz_num desc))
+		where
+		rnum<![CDATA[>]]>=#{startrow}
+		AND rnum<![CDATA[<]]>=#{endrow}
+	</select>
+	
+	<!-- 내가 즐겨찾기한 채용공고 개수 구하기 -->
+	<select id="biz_getMyFavoriteListCount" parameterType="String" resultType="int">
+		select count(*) from
+		biz_board_favorite
+		where biz_user_favorite = #{biz_user_favorite}
+	</select>
+	
+	<!-- 내가 즐겨찾기한 채용공고 목록 보기 -->
+	<select id="biz_getMyFavoriteList" parameterType="java.util.Map"
+		resultType="bizbean">
+		select * from
+		(select rownum rnum, BIZ_NUM, BIZ_NAME, BIZ_USER,
+		BIZ_SUBJECT, BIZ_CONTENT, BIZ_ZIPCODE, BIZ_LOC_1, BIZ_LOC_2, BIZ_OCC, BIZ_POSITION, BIZ_PATTERN,
+		BIZ_PAY, BIZ_EDUCATION, BIZ_CAREER, BIZ_FILE, BIZ_COUNT, 
+		BIZ_DATE, BIZ_EXPIRY_DATE
+		from
+		(select biz_board_favorite.*, biz_board.* from biz_board_favorite 
+		left outer join biz_board on biz_board_favorite.biz_num_favorite = biz_board.biz_num 
+		where biz_user_favorite = #{biz_user_favorite} order by biz_num desc))
+		where
+		rnum<![CDATA[>]]>=#{startrow}
+		AND rnum<![CDATA[<]]>=#{endrow}
+	</select>
+
+	<!-- 채용공고 내용 보기 -->
+	<select id="biz_getCont" parameterType="int" resultType="bizbean">
+		select *
+		from biz_board where BIZ_NUM = #{biz_num}
+	</select>
+
+	<!-- 채용공고 등록하기 -->
+	<insert id="biz_Insert" parameterType="bizbean">
+		insert into biz_board
+		(BIZ_NUM, BIZ_NAME, BIZ_USER, BIZ_SUBJECT, BIZ_CONTENT, BIZ_ZIPCODE, BIZ_LOC_1, BIZ_LOC_2,
+		BIZ_OCC, BIZ_POSITION, BIZ_PATTERN, BIZ_PAY,BIZ_EDUCATION, BIZ_CAREER,
+		BIZ_FILE, BIZ_COUNT, BIZ_DATE, BIZ_EXPIRY_DATE, BIZ_PRF_IMG)
+		values
+		(biz_board_seq.nextval,#{biz_name },#{biz_user },
+		#{biz_subject },#{biz_content }, #{biz_zipcode}, #{biz_loc_1}, #{biz_loc_2 }, 
+		#{biz_occ }, #{biz_position }, #{biz_pattern }, 
+		#{biz_pay }, #{biz_education }, #{biz_career }, 
+		#{biz_file, jdbcType=VARCHAR}, 0, sysdate, #{biz_expiry_date}, #{biz_prf_img})
+	</insert>
+
+	<!-- 채용공고 수정 -->
+	<update id="biz_Modify" parameterType="bizbean">
+		update biz_board
+		set
+		BIZ_SUBJECT=#{biz_subject}, BIZ_NAME=#{biz_name}, BIZ_ZIPCODE=#{biz_zipcode},
+		BIZ_LOC_1=#{biz_loc_1}, BIZ_LOC_2=#{biz_loc_2},
+		BIZ_PATTERN=#{biz_pattern}, BIZ_OCC=#{biz_occ},
+		BIZ_POSITION=#{biz_position}, BIZ_PAY=#{biz_pay},
+		BIZ_EDUCATION=#{biz_education}, BIZ_CAREER=#{biz_career},
+		BIZ_CONTENT=#{biz_content}, BIZ_FILE=#{biz_file, jdbcType=VARCHAR },
+		BIZ_EXPIRY_DATE=#{biz_expiry_date}
+		where BIZ_NUM=#{biz_num}
+	</update>
+
+	<!-- 채용공고 삭제 -->
+	<delete id="biz_Delete" parameterType="int">
+		delete from biz_board
+		where BIZ_NUM=#{biz_num}
+	</delete>
+
+	<!-- 즐겨찾기 추가 -->
+	<insert id="biz_FavoriteOn" parameterType="java.util.Map">
+		insert into
+		BIZ_BOARD_FAVORITE
+		(BIZ_NUM_FAVORITE, BIZ_USER_FAVORITE)
+		values
+		(#{biz_num_favorite },
+		#{biz_user_favorite})
+	</insert>
+
+	<!-- 즐겨찾기 취소 -->
+	<delete id="biz_FavoriteOff" parameterType="java.util.Map">
+		delete from
+		BIZ_BOARD_FAVORITE
+		where
+		BIZ_NUM_FAVORITE=#{biz_num_favorite } AND
+		BIZ_USER_FAVORITE=#{biz_user_favorite}
+	</delete>
+	
+	<!-- 내용보기에서 즐겨찾기 여부 확인 -->
+	<select id="biz_contFavorite" parameterType="java.util.Map" resultType="int">
+		select count(*) from (
+			select biz_num_favorite from biz_board_favorite 
+			where biz_user_favorite = #{biz_user}
+		)
+		where biz_num_favorite = #{biz_num}
+	</select>
+	
+	<!-- 우편번호 검색 -->
+	<select id="zipcodeList" parameterType="String"  resultType="Zipcode">
+		select * from zipcode where dong like #{dong}
+	</select>
+	
+	<!-- 회사명으로 검색 개수 -->
+	<select id="biz_searchNameCount" resultType="int">
+		select count(*) from
+		biz_board
+		where BIZ_NAME like #{biz_name}
+	</select>
+
+	<!-- 회사명으로 검색 -->
+	<select id="bizNameSearch" parameterType="java.util.Map" resultType="bizbean">
+		select * from
+		(select rownum rnum, BIZ_NUM, BIZ_NAME, BIZ_USER,
+		BIZ_SUBJECT, BIZ_CONTENT, BIZ_ZIPCODE, BIZ_LOC_1, BIZ_LOC_2, BIZ_OCC, BIZ_POSITION, BIZ_PATTERN,
+		BIZ_PAY, BIZ_EDUCATION, BIZ_CAREER, BIZ_FILE, BIZ_COUNT, 
+		BIZ_DATE, BIZ_EXPIRY_DATE
+		from
+		(select * from
+		biz_board where
+		BIZ_NAME like #{bizSearch} order by biz_num desc))
+		where
+		rnum<![CDATA[>]]>=#{startrow}
+		AND rnum<![CDATA[<]]>=#{endrow}
+	</select>
+	
+	<!-- 제목으로 검색 개수 -->
+	<select id="biz_searchSubjectCount" resultType="int">
+		select count(*) from
+		biz_board
+		where BIZ_SUBJECT like #{biz_subject}
+	</select>
+	
+	<!-- 제목으로 검색 -->
+	<select id="bizSubjectSearch" parameterType="java.util.Map" resultType="bizbean">
+		select * from
+		(select rownum rnum, BIZ_NUM, BIZ_NAME, BIZ_USER,
+		BIZ_SUBJECT, BIZ_CONTENT, BIZ_ZIPCODE, BIZ_LOC_1, BIZ_LOC_2, BIZ_OCC, BIZ_POSITION, BIZ_PATTERN,
+		BIZ_PAY, BIZ_EDUCATION, BIZ_CAREER, BIZ_FILE, BIZ_COUNT, 
+		BIZ_DATE, BIZ_EXPIRY_DATE
+		from
+		(select * from
+		biz_board where
+		BIZ_SUBJECT like #{bizSearch} order by biz_num desc))
+		where
+		rnum<![CDATA[>]]>=#{startrow}
+		AND rnum<![CDATA[<]]>=#{endrow}
+	</select>
+	
+	<!-- 지역으로 검색 개수 -->
+	<select id="biz_searchLocCount" resultType="int">
+		select count(*) from
+		biz_board
+		where BIZ_LOC_1 like #{biz_loc_1}
+	</select>
+	
+	<!-- 지역으로 검색 -->
+	<select id="bizLocSearch" parameterType="java.util.Map" resultType="bizbean">
+		select * from
+		(select rownum rnum, BIZ_NUM, BIZ_NAME, BIZ_USER,
+		BIZ_SUBJECT, BIZ_CONTENT, BIZ_ZIPCODE, BIZ_LOC_1, BIZ_LOC_2, BIZ_OCC, BIZ_POSITION, BIZ_PATTERN,
+		BIZ_PAY, BIZ_EDUCATION, BIZ_CAREER, BIZ_FILE, BIZ_COUNT, 
+		BIZ_DATE, BIZ_EXPIRY_DATE
+		from
+		(select * from
+		biz_board where
+		BIZ_LOC_1 like #{bizSearch} order by biz_num desc))
+		where
+		rnum<![CDATA[>]]>=#{startrow}
+		AND rnum<![CDATA[<]]>=#{endrow}
+	</select>
+	
+</mapper>
+
+

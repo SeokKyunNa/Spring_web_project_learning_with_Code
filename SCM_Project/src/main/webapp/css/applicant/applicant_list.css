@@ -1,0 +1,85 @@
+@CHARSET "UTF-8";
+
+.biz_main_nsk{
+	width: 580px;
+	margin: auto;
+	margin-top: 10px;
+}
+
+.biz_top_nsk{
+	width: 100%; 
+	height: 40px;
+}
+
+.biz_list_nsk{
+	border: 1px solid; 
+	border-top: 2px solid; 
+	border-spacing: 0px;
+}
+
+.biz_list_nsk thead tr td{
+	border-bottom: 1px solid; 
+	text-align: center; 
+	height: 35px;
+	background: #B2CCFF url(../../images/biz/th_bar.png) no-repeat right;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.biz_list_nsk tbody tr td{
+	background: #f5f8f8;
+	padding-left: 10px;
+	height: 75px;
+}
+
+.biz_list_pageNum_nsk{
+	text-align: center;
+	padding: 15px 0 15px 0;
+	font-size: 15px;
+}
+
+.biz_list_pageNum_nsk ul{
+	border-width:1px 0;
+	list-style:none;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+.biz_list_pageNum_nsk ul li{
+	display:inline;
+	background-color: white;
+	border: 1px black solid;
+	padding: 4px 10px 4px 10px;
+}
+
+.biz_list_pageNum_nsk a{
+  display:inline-block;
+}
+
+.applicant_list_btn_nsk {
+	height: 35px;
+	text-align: center;
+	line-height: 35px;
+	background-color: #3397e2;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: nanumgothic, dotum;
+	display: inline-block;
+	border-radius: 0.35em;
+	letter-spacing: 0.20em;
+	text-decoration: none;
+	color: #FFF;
+	border: 9;
+	outline: 0;
+	cursor: pointer;
+}
+
+.applicant_list_btn_nsk:hover{
+	background-color: #5CD1E5;
+}
+
+.spacer {
+	clear: both;
+	height: 70px;
+}

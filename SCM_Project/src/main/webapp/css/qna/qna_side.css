@@ -1,0 +1,81 @@
+/* 由ъ뒪�듃 �쟾泥� �쁺�뿭 珥덇린�솕 */
+.qna_list_area{
+	margin: auto; 
+	width: 960px; 
+	padding-top: 10px;
+}
+/* �궗�씠�뱶 硫붾돱 怨듦컙 留뚮뱾�뼱 二쇨린 */
+.qna_list_side{
+	float: left;
+	width: 200px; height: 910px;
+	background-color: white;
+	box-sizing : border-box;
+	border-radius: 4px;
+	padding-top: 25px;
+}
+/* �궗吏꾨굹�삤�뒗 �쁺�뿭 洹몃┝�옄 留뚮뱾湲� �쐞�빐 留뚮뱺 怨� */
+.qna_list_side_picarea{
+	border-bottom: 1px solid silver;
+	box-shadow : 0px 1px 0px gray;
+}
+
+/* �궗�슜�옄 �궗吏� �굹�삤�뒗 遺�遺� */
+.qna_list_userpic{
+	overflow: hidden; 
+	width: 150px; height: 150px;
+	border-radius: 80px;
+	margin: auto;
+}
+.qna_list_userpic img{
+	height: 150px;
+	width: 150px;
+}
+/* �궗吏� 諛묒뿉 �궗�슜�옄 �븘�씠�뵒 �굹�삤�뒗 遺�遺� */
+.qna_list_userid{
+	text-align: center;
+	color: #292f33;
+	font-size: 12pt;
+	margin: 15px 0px 35px 0px;
+}
+/* 吏덈Ц�븯湲� 踰꾪듉 */
+.qna_side_qnabutton{
+	border-bottom: 1px solid silver;
+	box-shadow : 0px 1px 0px gray;
+	padding: 10px 0px 10px 15px;
+	cursor : pointer;
+}
+.qna_side_qnabutton:hover{
+	background-color: gray;
+}
+/* '肄붾뵫吏덈Ц'�씠�씪怨� �벖 �씪踰� */
+.qna_side_qnalavel{
+	border-bottom: 1px solid silver;
+	box-shadow : 0px 1px 0px gray;
+	padding: 10px 0px 10px 15px;
+}
+/* �봽濡쒓렇�옩�뼵�뼱 �굹�뿴�맂 遺�遺� 媛먯떥怨� �엳�뒗 諛뺤뒪 */
+.qna_side_language_box{
+	border-bottom: 1px solid silver;
+	box-shadow : 0px 1px 0px gray;
+}
+/* �봽濡쒓렇�옩 �뼵�뼱 �굹�뿴�맂 遺�遺� */ 
+.qna_side_language_button{
+	padding: 5px 0px 5px 30px;
+}
+/* 留덉슦�뒪 �삱�졇�쓣 �븣 �깋�긽 background �깋�긽 蹂��솕 */
+.qna_side_language_button:hover{
+	background-color: gray;
+	cursor : pointer;
+	
+}
+
+
+/* 而⑦뀗痢� �쁺�뿭 怨듦컙 留뚮뱾�뼱 二쇨린 */
+.qna_list_content{
+	float: left;
+	margin-left: 10px;
+	width: 750px;	
+	box-sizing : border-box;
+	border-radius: 4px
+}
+ 

@@ -1,0 +1,218 @@
+
+.qna_write_area{
+	background-color: white;
+	margin-top: -10px;
+	padding: 20px 0px 50px 0px;
+}
+
+/* 글쓰기 폼 라벨에 공백 주기 */
+.qna_write_area_table>tbody>tr>td:first-child{
+	padding-right: 15px;	
+	text-align: right;
+}
+/* 제목쓰는 input 영역 */
+.qna_write_subject_input{
+	width: 545px;
+}
+/* 작성코드 미리보기 버튼 */
+.qna_write_view{
+	width: 50px;
+	font-size: 8pt;
+	padding: 0px
+}
+#code_view_hilight{
+	width: 530px;
+}
+#qna_code_area{
+	padding: 0px;
+	height: auto;
+}
+
+/* 파일 선택시 미리보기 나오는 이미지 */
+.qna_write_file_preview img{
+	width: 120px;
+	height: 80px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	
+}
+.qna_write_file_preview div{
+	float: left;
+	padding: 0px;
+	transition-duration:1s;
+}
+
+
+
+.qna_file_img_hover{
+	position:static;
+	filter:alpha(opacity=70);
+	-moz-opacity:0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+}
+.qna_file_close_hover{
+	z-index:8999;  
+	filter:alpha(opacity=100);
+	-moz-opacity:1.0;
+	-khtml-opacity: 1.0;
+	opacity: 1.0;
+}
+/* 이미지 롤오버시 나오는 흰색 배경과 글씨 */
+/* .qna_write_file_mask{
+	position:absolute;  
+	z-index:8999;  
+	background-color: white;  
+	display:none;
+	color: red;
+	text-align: center;
+	line-height: 16px;
+	font-weight: bold;
+	font-size: 8pt;
+	width: 20px;
+	height: 20px;
+	border-radius: 15px;
+	filter:alpha(opacity=70);
+	-moz-opacity:0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+	margin: 0px;
+	cursor : pointer
+}*/
+
+.qna_write_file_mask img{
+	width: 15px;
+	height: 15px;
+	cursor : pointer;
+}
+.qna_img_Close{
+	/* position:absolute;  */
+	width: 15px;
+	height: 15px;
+	cursor : pointer;
+}
+
+/* 내용 글쓰기 가능한 화면으로 만들어 주는 영역 */
+#qna_write_body_textarea{
+	width: 540px; height: 500px;
+	border: 1px solid silver;
+	padding: 5px;
+	overflow:auto;
+}
+
+/* 글쓰기 에디터 영역 */
+.qna_writer_edit{
+	margin: 0px;
+	padding: 0px;
+	display: inline-flex;
+}
+.qna_writer_edit li{
+	float: left;
+	padding: 0px;
+	
+}
+.qna_writer_edit input{
+	background-color: white;
+	margin-left: -1px;
+	width: 30px;
+	height: 22px;
+	box-sizing : border-box;
+	vertical-align:middle;
+	font-size: 9pt;
+	cursor : pointer;
+}
+/*폰트 스타일 선택하는 곳*/
+#changeFontName{
+	box-sizing : border-box;
+	vertical-align:middle;
+	height: 22px;
+	font-size: 9pt;
+}
+
+/*폰트 크기 지정하는 곳*/
+#changeFontSize{
+	box-sizing : border-box;
+	vertical-align:middle;
+	height: 22px;
+	font-size: 9pt;
+	margin-right: 10px;
+}
+
+/* 글자 굵게하기 버튼 */
+.qna_editer1{
+	border: 1px solid silver;
+	border-radius: 2px 0px 0px 2px;
+	font-weight: bold;
+}
+/* 글자 밑줄긋기 버튼 */
+.qna_editer2{
+	border-top: 1px solid silver;
+	border-right: 1px solid silver;
+	border-bottom: 1px solid silver;
+	text-decoration : underline
+}
+
+/* 글자 기울기 버튼 */
+.qna_editer3{
+	border-top: 1px solid silver;
+	border-right: 1px solid silver;
+	border-bottom: 1px solid silver;
+	font-style : italic;
+}
+/* 글자 가운데 선 긋기 버튼 */
+.qna_editer4{
+	border-top: 1px solid silver;
+	border-right: 1px solid silver;
+	border-bottom: 1px solid silver;
+	text-decoration : line-through
+}
+/* 글자 색상 선택하기 버튼 */
+.qna_editer5{
+	border-top: 1px solid silver;
+	border-right: 1px solid silver;
+	border-bottom: 1px solid silver;
+	border-radius: 0px 2px 2px 0px;
+	background-color: white;
+	margin-left: -1px;
+	width: 30px;
+	height: 22px;
+	box-sizing : border-box;
+	vertical-align:middle;
+	font-size: 9pt;
+	cursor : pointer;
+}
+#qna_fontColor_button_div{
+	border-bottom: 3px solid black;
+	margin-top: -3px;
+	width: 12px;
+	font-size: 9pt;
+	margin-left: 2px;
+}
+
+/*색상 선택할 수 있는 색상표*/
+.qna_select_color{
+	border: 1px solid silver;
+	border-radius: 3px;
+	padding: 5px 5px 5px 5px;
+	width: auto;
+	height: auto;
+	position: absolute;
+	left: 645px;
+	margin-top: 2px;
+	background-color: white;
+	z-index: 1;
+}
+.qna_select_color>table>tbody>tr>td{
+	width: 10px;
+	height: 10px;
+	padding: 0px
+}
+
+/* 글자 색상 박스 */
+.color_box{
+	width:10px; 
+	height: 10px; 
+	padding: 0px; 
+	background: none;
+	border:none;
+}
