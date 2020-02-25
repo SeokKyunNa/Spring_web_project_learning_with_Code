@@ -13,7 +13,7 @@ import model.biz.BizBean;
 import model.prf.prfBean;
 import model.sns.SnsBean;
 
-import org.junit.runner.Request;
+//import org.junit.runner.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
@@ -55,7 +55,7 @@ public class SnsAction {
 		this.bizService = bizService;
 	}
 
-	// sns ±Û¾²±â Æû
+	// sns ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½
 	@RequestMapping(value = "/sns_write.sns")
 	public String sns_Write(Model model) {
 
@@ -63,7 +63,7 @@ public class SnsAction {
 		return "main";
 	}
 
-	/* SNS ¸ñ·Ï(ÀüÃ¼) */
+	/* SNS ï¿½ï¿½ï¿½(ï¿½ï¿½Ã¼) */
 	@RequestMapping(value = "/sns_list.sns")
 	public ModelAndView sns_list(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -84,21 +84,21 @@ public class SnsAction {
 		prfbean = this.prfService.getDetail(idprf);
 		session.setAttribute("prfbean", prfbean);
 		
-		// ÀÌÀü¿¡ ¼³Á¤µÈ limit°¡ ÀÖ´ÂÁö Ã¼Å©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ limitï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
 		if (session.getAttribute("limit") != null) {
 			limit = (Integer) session.getAttribute("limit");
 		}
 
-		// º¯°æµÈ limit°¡ ÀÖ´ÂÁö Ã¼Å©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ limitï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
 		if (request.getParameter("limit") != null) {
 			limit = Integer.parseInt(request.getParameter("limit"));
 			session.setAttribute("limit", limit);
 		}
 
-		// ÃÑ ¸®½ºÆ® ¼ö¸¦ ¹Þ¾Æ¿È.
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½.
 		int listcount = this.snsService.sns_getListCount();
-		int startrow = (page - 1) * limit + 1; // ÀÐ±â ½ÃÀÛÇÒ row ¹øÈ£.
-		int endrow = startrow + limit - 1; // ÀÐÀ» ¸¶Áö¸· row ¹øÈ£.
+		int startrow = (page - 1) * limit + 1; // ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ row ï¿½ï¿½È£.
+		int endrow = startrow + limit - 1; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ row ï¿½ï¿½È£.
 
 		Map m = new HashMap();
 		m.put("startrow", startrow);
@@ -113,7 +113,7 @@ public class SnsAction {
 		session.setAttribute("count_sns", count_sns);
 		snsgood = snsService.getSnsListGood(id);
 
-		// °Ô½Ã±Û ¹øÈ£¿Í ÁÁ¾Æ¿ä ¹øÈ£¸¦ ºñ±³ÇØ¼­ µ¿ÀÏÇÏ¸é sns_favorite_onÀ» 1·Î º¯°æ
+		// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ sns_favorite_onï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < snslist.size(); i++) {
 			int good_on = 0;
 			int snsListNum = Integer.valueOf(snslist.get(i).getWrite_num());
@@ -132,8 +132,8 @@ public class SnsAction {
 
 		}
 
-		// ÃÑ ÆäÀÌÁö ¼ö.
-		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95¸¦ ´õÇØ¼­ ¿Ã¸²
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
+		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ã¸ï¿½
 		
 
 		ModelAndView snsListM = new ModelAndView("main");
@@ -151,7 +151,7 @@ public class SnsAction {
 		return snsListM;
 	}
 
-	/* SNS ¸ñ·Ï(³»±Ûº¸±â) */
+	/* SNS ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ûºï¿½ï¿½ï¿½) */
 	@RequestMapping(value = "/sns_list_mine.sns")
 	public ModelAndView sns_list_mine(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -180,7 +180,7 @@ public class SnsAction {
 		m.put("sns_user", id);
 
 		bizlist = this.bizService.biz_getList(m);
-		snslist = snsService.getSnsList(m); // ¸®½ºÆ®¸¦ ¹Þ¾Æ¿È
+		snslist = snsService.getSnsList(m); // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
 		snsuser = snsService.getSnsUser();
 		int count_sns = snsService.getcount(id);
 		session.setAttribute("count_sns", count_sns);
@@ -220,7 +220,7 @@ public class SnsAction {
 		return snsListM;
 	}
 
-	/* SNS ÀúÀå */
+	/* SNS ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_write_ok.sns", method = RequestMethod.POST)
 	public ModelAndView sns_write_ok(HttpServletResponse response, HttpServletRequest request,
 			MultipartHttpServletRequest mhsq) throws Exception {
@@ -240,15 +240,15 @@ public class SnsAction {
 			imastr += sns_file[x];
 			imastr += "|";
 		}}
-		// ½ÇÁ¦ ÀúÀå °æ·Î¸¦ ÁöÁ¤ÇÕ´Ï´Ù.
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 		realFolder = request.getRealPath(saveFolder);
-		System.out.println("real°æ·Î"+realFolder);
+		System.out.println("realï¿½ï¿½ï¿½"+realFolder);
 		
-		// ¼±ÅÃÇÑ ÀÌ¹ÌÁö ¸ðµç Á¤º¸ °®°í ÀÖ´Â °÷
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½
 		if(mhsq.getFile("write_file[]") != null){
 		List<MultipartFile> mf = mhsq.getFiles("write_file[]");
 
-		// »èÁ¦µÈ ÈÄÀÇ Á¤º¸¸¦ °®°í ÀÖ´Â °÷
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½
 		List<String> fileNames = new ArrayList<String>();
 		FileOutputStream fos;
 		String fileName = null;
@@ -297,25 +297,25 @@ public class SnsAction {
 		snsbean.setWrite_pic(sns_pic);
 	
 
-		this.snsService.insertSns(snsbean); // ÀúÀå¸Þ¼Òµå È£Ãâ
+		this.snsService.insertSns(snsbean); // ï¿½ï¿½ï¿½ï¿½Þ¼Òµï¿½ È£ï¿½ï¿½
 
 		response.sendRedirect("sns_list.sns");
 
 		return null;
 	}
 
-	/* SNS ³»¿ëº¸±â, ¼öÁ¤Æû */
+	/* SNS ï¿½ï¿½ï¿½ëº¸ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_detail.sns")
 	public ModelAndView sns_cont(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
-		String state = request.getParameter("state");// ±¸ºÐÇÊµå
+		String state = request.getParameter("state");// ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½
 		
 		SnsBean snsbean = this.snsService.getSnsCont(num);
 		List<SnsBean> snsuser = new ArrayList<SnsBean>();
 		
 		
-		// ±Û ³»¿ëÁß ¿£ÅÍÅ° Ä£ºÎºÐÀ» ´ÙÀ½ÁÙ·Î °³Çà
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å° Ä£ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String sns_cont = snsbean.getWrite_body().replace("\n", "<br/>");
 		SnsBean sns = snsService.getSnsCont(num);
 		List<SnsBean> sns_reply = snsService.getReplyCont(num);
@@ -333,27 +333,27 @@ public class SnsAction {
 		contM.addObject("sns_cont", sns_cont);
 		contM.addObject("snsuser", snsuser);
 
-		if (state.equals("cont")) {// ³»¿ëº¸±âÀÏ¶§
-			contM.setViewName("main");// ³»¿ëº¸±â ÆäÀÌÁö ¼³Á¤
+		if (state.equals("cont")) {// ï¿½ï¿½ï¿½ëº¸ï¿½ï¿½ï¿½Ï¶ï¿½
+			contM.setViewName("main");// ï¿½ï¿½ï¿½ëº¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			contM.addObject("bodyAdd", "sns/sns_detail");
-		} else if (state.equals("edit")) {// ¼öÁ¤Æû
+		} else if (state.equals("edit")) {// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			contM.setViewName("main");
 			contM.addObject("bodyAdd", "sns/sns_edit");
 		}
 		return contM;
 	}
 
-	/* sns±Û »èÁ¦ */
+	/* snsï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_delete_ok.sns", method = RequestMethod.GET)
 	public String sns_del_ok(@RequestParam("num") int num, HttpServletResponse response, HttpServletRequest request)
 			throws Exception {
-		// À¥»ó¿¡ º¸ÀÌ´Â ¾ð¾îÄÚµù Å¸ÀÔÀ» ÁöÁ¤
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
 		String sns_name = (String) session.getAttribute("id");
-		PrintWriter out = response.getWriter();// Ãâ·Â ½ºÆ®¸² °´Ã¼»ý¼º
+		PrintWriter out = response.getWriter();// ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 		SnsBean sns = snsService.getSnsCont(num);
 		String up = "D:/nsk/SCM_Project/src/main/webapp/upload";
 
@@ -361,13 +361,13 @@ public class SnsAction {
 
 		if (!sns.getWrite_user().equals(sns_name)) {
 			out.println("<script>");
-			out.println("alert('±ÇÇÑÀÌ ¾ø½À´Ï´Ù.')");
+			out.println("alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.')");
 			out.println("history.go(-1)");
 			out.println("</script>");
 		} else {
 			if (fname != null) {
 				File file = new File(up + fname);
-				file.delete();// ¼­¹öÆú´õ·Î ºÎÅÍ ±âÁ¸ ÀÌÁø ÆÄÀÏ »èÁ¦ÇÕ´Ï´Ù.
+				file.delete();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 			}
 			snsService.snsDelete(num);
 
@@ -376,14 +376,14 @@ public class SnsAction {
 		return null;
 	}
 
-	/* sns±Û ¼öÁ¤ */
+	/* snsï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_edit_ok.sns", method = RequestMethod.POST)
 	public ModelAndView sns_edit_ok(HttpServletRequest request, HttpServletResponse response,
 			MultipartHttpServletRequest mhsq) throws Exception {
 
 		SnsBean snsbean = new SnsBean();
 		response.setContentType("text/html;chaset=UTF-8");
-		PrintWriter out = response.getWriter();// Ãâ·Â½ºÆ®¸² »ý¼º
+		PrintWriter out = response.getWriter();// ï¿½ï¿½Â½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 		String realFolder = "";
 		String saveFolder = "upload";
@@ -401,7 +401,7 @@ public class SnsAction {
 
 		realFolder = request.getRealPath(saveFolder);
 
-		// ¼±ÅÃÇÑ ÀÌ¹ÌÁö ¸ðµç Á¤º¸ °®°í ÀÖ´Â °÷
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½
 		List<MultipartFile> mf = mhsq.getFiles("write_file[]");
 
 		List<String> fileNames = new ArrayList<String>();
@@ -445,7 +445,7 @@ public class SnsAction {
 		return null;
 	}
 
-	/* ´ñ±Û´Þ±â */
+	/* ï¿½ï¿½Û´Þ±ï¿½ */
 	@RequestMapping(value = "/sns_reply_ok.sns", method = RequestMethod.POST)
 	public void sns_reply_ok(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		SnsBean snsbean = new SnsBean();
@@ -463,14 +463,14 @@ public class SnsAction {
 		int wnum = snsService.getReplyCount(num);
 		snsbean.setReply_wnum(wnum);
 
-		this.snsService.insertSns_reply(snsbean); // ÀúÀå¸Þ¼Òµå È£Ãâ
-		this.snsService.reply_update_in(wnum); // ´ñ±Û¼ö Ä«¿îÆ®
+		this.snsService.insertSns_reply(snsbean); // ï¿½ï¿½ï¿½ï¿½Þ¼Òµï¿½ È£ï¿½ï¿½
+		this.snsService.reply_update_in(wnum); // ï¿½ï¿½Û¼ï¿½ Ä«ï¿½ï¿½Æ®
         
 
 
 		
 	}
-	/* ´ñ±Û´Þ±â(´õº¸±â) */
+	/* ï¿½ï¿½Û´Þ±ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) */
 	@RequestMapping(value = "/sns_reply_de.sns", method = RequestMethod.POST)
 	public void sns_reply_de(HttpServletResponse response, HttpServletRequest request) throws Exception {
 		SnsBean snsbean = new SnsBean();
@@ -488,14 +488,14 @@ public class SnsAction {
 		int wnum = snsService.getReplyCount(num);
 		snsbean.setReply_wnum(wnum);
 
-		this.snsService.insertSns_reply(snsbean); // ÀúÀå¸Þ¼Òµå È£Ãâ
-		this.snsService.reply_update_in(wnum); // ´ñ±Û¼ö Ä«¿îÆ®
+		this.snsService.insertSns_reply(snsbean); // ï¿½ï¿½ï¿½ï¿½Þ¼Òµï¿½ È£ï¿½ï¿½
+		this.snsService.reply_update_in(wnum); // ï¿½ï¿½Û¼ï¿½ Ä«ï¿½ï¿½Æ®
         
 		response.sendRedirect("sns_detail.sns?num=" + num + "&state=cont");
 		
 	}
 
-	/* ÁÁ¾Æ¿ä Ãß°¡ */
+	/* ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ß°ï¿½ */
 	@RequestMapping(value = "/sns_good_on.sns")
 	public ModelAndView sns_good_on(@RequestParam(value = "sns_num_good") int sns_num_good, HttpServletRequest request,
 			HttpServletResponse response,@RequestParam(value="cont", required = false, defaultValue="list") String cont
@@ -508,7 +508,7 @@ public class SnsAction {
 		m.put("goodnum", sns_num_good);
 		m.put("goodid", sns_user_good);
 
-		this.snsService.insertSns_good(m); // Áñ°ÜÃ£±â Ãß°¡ ¸Þ¼­µå È£Ãâ
+		this.snsService.insertSns_good(m); // ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½
 		this.snsService.updateSns_good_in(sns_num_good);
 		if(cont.equals("list")){
 		response.sendRedirect("sns_list.sns");}
@@ -520,7 +520,7 @@ public class SnsAction {
 		return null;
 	}
 
-	/* ÁÁ¾Æ¿ä »èÁ¦ */
+	/* ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_good_off.sns")
 	public ModelAndView sns_good_off(@RequestParam(value = "sns_num_good") int sns_num_good, HttpServletRequest request,
 			HttpServletResponse response, @RequestParam(value="cont", required = false, defaultValue="list") String cont
@@ -534,7 +534,7 @@ public class SnsAction {
 		m.put("goodnum", sns_num_good);
 		m.put("goodid", goodid);
 	
-		this.snsService.deleteSns_good(m); // Áñ°ÜÃ£±â »èÁ¦ ¸Þ¼­µå È£Ãâ
+		this.snsService.deleteSns_good(m); // ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½
 		this.snsService.updateSns_good_de(sns_num_good);
 
 		if(cont.equals("list")){
@@ -545,7 +545,7 @@ public class SnsAction {
 		return null;
 	}
 
-	/* ´ñ±Û »èÁ¦ */
+	/* ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/reply_delete_ok.sns", method = RequestMethod.GET)
 	public String reply_del_ok(@RequestParam("wnum") int wnum, @RequestParam("num") int num,
 			HttpServletResponse response, HttpServletRequest request) throws Exception {
@@ -559,7 +559,7 @@ public class SnsAction {
 
 	}
 
-	/* SNS ¹«ÇÑ½ºÅ©·Ñ */
+	/* SNS ï¿½ï¿½ï¿½Ñ½ï¿½Å©ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_list1.sns", method = RequestMethod.POST)
 	public ModelAndView sns_list1(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -570,21 +570,21 @@ public class SnsAction {
 		List<SnsBean> snsgood = new ArrayList<SnsBean>();
 		List<SnsBean> snsuser = new ArrayList<SnsBean>();
 
-		// ÀÌÀü¿¡ ¼³Á¤µÈ limit°¡ ÀÖ´ÂÁö Ã¼Å©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ limitï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
 		if (session.getAttribute("limit") != null) {
 			limit = (Integer) session.getAttribute("limit");
 		}
 
-		// º¯°æµÈ limit°¡ ÀÖ´ÂÁö Ã¼Å©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ limitï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
 		if (request.getParameter("limit") != null) {
 			limit = Integer.parseInt(request.getParameter("limit"));
 			session.setAttribute("limit", limit);
 		}
 
-		// ÃÑ ¸®½ºÆ® ¼ö¸¦ ¹Þ¾Æ¿È.
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½.
 		int listcount = this.snsService.sns_getListCount();
-		int startrow = (page - 1) * limit + 1; // ÀÐ±â ½ÃÀÛÇÒ row ¹øÈ£.
-		int endrow = startrow + limit - 1; // ÀÐÀ» ¸¶Áö¸· row ¹øÈ£.
+		int startrow = (page - 1) * limit + 1; // ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ row ï¿½ï¿½È£.
+		int endrow = startrow + limit - 1; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ row ï¿½ï¿½È£.
 
 		Map m = new HashMap();
 		m.put("startrow", startrow);
@@ -598,7 +598,7 @@ public class SnsAction {
 		session.setAttribute("count_sns", count_sns);
 		snsgood = snsService.getSnsListGood(id);
 
-		// °Ô½Ã±Û ¹øÈ£¿Í ÁÁ¾Æ¿ä ¹øÈ£¸¦ ºñ±³ÇØ¼­ µ¿ÀÏÇÏ¸é sns_favorite_onÀ» 1·Î º¯°æ
+		// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ sns_favorite_onï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < snslist.size(); i++) {
 			int good_on = 0;
 			int snsListNum = Integer.valueOf(snslist.get(i).getWrite_num());
@@ -618,8 +618,8 @@ public class SnsAction {
 
 		}
 
-		// ÃÑ ÆäÀÌÁö ¼ö.
-		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95¸¦ ´õÇØ¼­ ¿Ã¸²
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
+		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ã¸ï¿½
 
 
 		ModelAndView snsListM = new ModelAndView("sns/sns_content1");
@@ -635,7 +635,7 @@ public class SnsAction {
 		return snsListM;
 	}
 
-	/* SNS ¸ñ·Ï(³»±Ûº¸±â) ¹«ÇÑ ½ºÅ©·Ñ */
+	/* SNS ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ûºï¿½ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_list_p.sns", method = RequestMethod.POST)
 	public ModelAndView sns_list_p(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -663,7 +663,7 @@ public class SnsAction {
 		m.put("endrow", endrow);
 		m.put("sns_user", id);
 
-		snslist = snsService.getSnsList(m); // ¸®½ºÆ®¸¦ ¹Þ¾Æ¿È
+		snslist = snsService.getSnsList(m); // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
 		snsuser = snsService.getSnsUser();
 
 		int count_sns = snsService.getcount(id);
@@ -704,7 +704,7 @@ public class SnsAction {
 		return snsListM;
 	}
 	
-	/*SNS ÁÁ¾Æ¿äÇÑ ±Û º¸±â */
+	/*SNS ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_list_good.sns")
 	public ModelAndView sns_list_good(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -716,22 +716,22 @@ public class SnsAction {
 		List<SnsBean> snsuser = new ArrayList<SnsBean>();
 		List<BizBean> bizlist = new ArrayList<BizBean>();
 
-		// ÀÌÀü¿¡ ¼³Á¤µÈ limit°¡ ÀÖ´ÂÁö Ã¼Å©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ limitï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
 		if (session.getAttribute("limit") != null) {
 			limit = (Integer) session.getAttribute("limit");
 		}
 
-		// º¯°æµÈ limit°¡ ÀÖ´ÂÁö Ã¼Å©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ limitï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
 		if (request.getParameter("limit") != null) {
 			limit = Integer.parseInt(request.getParameter("limit"));
 			session.setAttribute("limit", limit);
 		}
 		String id = (String)session.getAttribute("id");
 
-		// ÃÑ ¸®½ºÆ® ¼ö¸¦ ¹Þ¾Æ¿È.
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½.
 		int listcount = this.snsService.sns_getgoodCount(id);
-		int startrow = (page - 1) * limit + 1; // ÀÐ±â ½ÃÀÛÇÒ row ¹øÈ£.
-		int endrow = startrow + limit - 1; // ÀÐÀ» ¸¶Áö¸· row ¹øÈ£.
+		int startrow = (page - 1) * limit + 1; // ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ row ï¿½ï¿½È£.
+		int endrow = startrow + limit - 1; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ row ï¿½ï¿½È£.
 
 		Map m = new HashMap();
 		m.put("startrow", startrow);
@@ -746,7 +746,7 @@ public class SnsAction {
 		session.setAttribute("count_sns", count_sns);
 		snsgood = snsService.getSnsListGood(id);
 
-		// °Ô½Ã±Û ¹øÈ£¿Í ÁÁ¾Æ¿ä ¹øÈ£¸¦ ºñ±³ÇØ¼­ µ¿ÀÏÇÏ¸é sns_favorite_onÀ» 1·Î º¯°æ
+		// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ sns_favorite_onï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < snslist.size(); i++) {
 			int good_on = 0;
 			int snsListNum = Integer.valueOf(snslist.get(i).getWrite_num());
@@ -765,8 +765,8 @@ public class SnsAction {
 
 		}
 
-		// ÃÑ ÆäÀÌÁö ¼ö.
-		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95¸¦ ´õÇØ¼­ ¿Ã¸²
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
+		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ã¸ï¿½
 	
 
 		ModelAndView snsListM = new ModelAndView("main");
@@ -784,7 +784,7 @@ public class SnsAction {
 		return snsListM;
 	}
 	
-	/* SNS ÁÁ¾Æ¿ä ¹«ÇÑ ½ºÅ©·Ñ */
+	/* SNS ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_like.sns", method = RequestMethod.POST)
 	public ModelAndView sns_like(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -795,22 +795,22 @@ public class SnsAction {
 		
 		int limit = 3;
 		HttpSession session = request.getSession();
-		// ÀÌÀü¿¡ ¼³Á¤µÈ limit°¡ ÀÖ´ÂÁö Ã¼Å©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ limitï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
 		if (session.getAttribute("limit") != null) {
 			limit = (Integer) session.getAttribute("limit");
 		}
 
-		// º¯°æµÈ limit°¡ ÀÖ´ÂÁö Ã¼Å©
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ limitï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
 		if (request.getParameter("limit") != null) {
 			limit = Integer.parseInt(request.getParameter("limit"));
 			session.setAttribute("limit", limit);
 		}
 		String id = (String)session.getAttribute("id");
 
-		// ÃÑ ¸®½ºÆ® ¼ö¸¦ ¹Þ¾Æ¿È.
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½.
 		int listcount = this.snsService.sns_getgoodCount(id);
-		int startrow = (page - 1) * limit + 1; // ÀÐ±â ½ÃÀÛÇÒ row ¹øÈ£.
-		int endrow = startrow + limit - 1; // ÀÐÀ» ¸¶Áö¸· row ¹øÈ£.
+		int startrow = (page - 1) * limit + 1; // ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ row ï¿½ï¿½È£.
+		int endrow = startrow + limit - 1; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ row ï¿½ï¿½È£.
 
 		Map m = new HashMap();
 		m.put("startrow", startrow);
@@ -824,7 +824,7 @@ public class SnsAction {
 		session.setAttribute("count_sns", count_sns);
 		snsgood = snsService.getSnsListGood(id);
 
-		// °Ô½Ã±Û ¹øÈ£¿Í ÁÁ¾Æ¿ä ¹øÈ£¸¦ ºñ±³ÇØ¼­ µ¿ÀÏÇÏ¸é sns_favorite_onÀ» 1·Î º¯°æ
+		// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ sns_favorite_onï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < snslist.size(); i++) {
 			int good_on = 0;
 			int snsListNum = Integer.valueOf(snslist.get(i).getWrite_num());
@@ -843,8 +843,8 @@ public class SnsAction {
 
 		}
 
-		// ÃÑ ÆäÀÌÁö ¼ö.
-		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95¸¦ ´õÇØ¼­ ¿Ã¸²
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
+		int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ã¸ï¿½
 		
 		ModelAndView snsListM = new ModelAndView("sns/sns_content1");
 
@@ -861,8 +861,8 @@ public class SnsAction {
 		return snsListM;
 	}
 	
-	/*»õÃ¢ ¶ç¿ì±â*/
-	/* SNS ³»¿ëº¸±â, ¼öÁ¤Æû */
+	/*ï¿½ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½*/
+	/* SNS ï¿½ï¿½ï¿½ëº¸ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/sns_detail_open.sns")
 	public ModelAndView sns_detail_open(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -873,7 +873,7 @@ public class SnsAction {
 		List<SnsBean> snsuser = new ArrayList<SnsBean>();
 		
 		
-		// ±Û ³»¿ëÁß ¿£ÅÍÅ° Ä£ºÎºÐÀ» ´ÙÀ½ÁÙ·Î °³Çà
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å° Ä£ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String sns_cont = snsbean.getWrite_body().replace("\n", "<br/>");
 		SnsBean sns = snsService.getSnsCont(num);
 		List<SnsBean> sns_reply = snsService.getReplyCont(num);
