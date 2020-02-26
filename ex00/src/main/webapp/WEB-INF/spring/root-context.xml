@@ -17,7 +17,7 @@
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
   		<property name="url" value="jdbc:oracle:thin:@localhost:1521/xepdb1" />
 		<property name="username" value="ZEROCK" />
-		<property name="password" value="zerock12#"/>
+		<property name="password" value="zerock12#" />
 		
 	</bean>
 </beans>
