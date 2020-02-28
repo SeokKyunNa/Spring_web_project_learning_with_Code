@@ -1,4 +1,4 @@
-package org.zerock.presistence;
+package org.zerock.persistence;
 
 import org.zerock.domain.MemberVO;
 

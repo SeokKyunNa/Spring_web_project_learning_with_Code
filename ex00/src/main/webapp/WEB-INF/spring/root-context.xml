@@ -12,7 +12,10 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	
+	<context:component-scan base-package="org.zerock.persistence">
+	</context:component-scan>
+
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
   		<property name="url" value="jdbc:oracle:thin:@localhost:1521/xepdb1" />
@@ -31,3 +34,4 @@
 	</bean>
 	
 </beans>
+
