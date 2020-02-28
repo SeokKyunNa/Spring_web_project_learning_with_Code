@@ -21,7 +21,7 @@ public class MemberDAOTest {
 		
 		System.out.println(dao.getTime());
 	}
-	
+	/*
 	@Test
 	public void testInsertMember() throws Exception{
 		
@@ -32,7 +32,18 @@ public class MemberDAOTest {
 		vo.setEmail("user00@aaa.com");
 		
 		dao.insertMember(vo);
+	}
+	*/
+	@Test
+	public void testReadMember() throws Exception{
 		
+		dao.readMember("user00");
+	}
+	
+	@Test
+	public void testReadWithPW() throws Exception{
+		
+		dao.readWithPW("user00", "user00");
 	}
 
 }
