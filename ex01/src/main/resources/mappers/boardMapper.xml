@@ -22,7 +22,7 @@
   	</resultMap> -->
   	
   	<!-- <select id="read" parameterType="java.util.HashMap" resultMap="readMap"> -->
-  	<select id="read" resultType="org.zerock.domain.BoardVO">
+  	<select id="read" resultType="BoardVO">
   		select
   			bno, title, content, writer, regdate, viewcnt
   		from
@@ -47,7 +47,7 @@
   			bno=${bno}
   	</delete>
   	
-  	<select id="listAll" resultType="org.zerock.domain.BoardVO">
+  	<select id="listAll" resultType="BoardVO">
   		<![CDATA[
   		select
   			bno, title, content, writer, regdate, viewcnt
