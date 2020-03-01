@@ -12,6 +12,16 @@
   			(#{title}, #{content}, #{writer})
   	</insert>
   	
+  	<!-- <resultMap id="readMap" type="HashMap">
+  		<result property="bno" column="bno" />
+  		<result property="title" column="title" />
+  		<result property="content" column="title" jdbcType="CLOB" javaType="java.lang.String" />
+  		<result property="writer" column="writer" />
+  		<result property="regdate" column="regdate" />
+  		<result property="viewcnt" column="viewcnt" />
+  	</resultMap> -->
+  	
+  	<!-- <select id="read" parameterType="java.util.HashMap" resultMap="readMap"> -->
   	<select id="read" resultType="org.zerock.domain.BoardVO">
   		select
   			bno, title, content, writer, regdate, viewcnt
@@ -33,7 +43,7 @@
   	<delete id="delete">
   		delete from
   			tbl_board
-  		were
+  		where
   			bno=${bno}
   	</delete>
   	
