@@ -1,3 +1,6 @@
+-- 순번 생성을 위한 sequences 테이블
+create sequence tmp_seqs start with 1 increment by 1
+
 -- BOARD TABLE
 CREATE TABLE TBL_BOARD
 (

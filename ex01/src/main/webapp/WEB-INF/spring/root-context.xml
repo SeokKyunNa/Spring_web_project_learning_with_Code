@@ -13,6 +13,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	<!-- org.zerock.persistence 자동 인식을 위한 설정 -->
 	<context:component-scan base-package="org.zerock.persistence">
 	</context:component-scan>
 
@@ -27,7 +28,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml" />
-		<!-- <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" /> -->
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
