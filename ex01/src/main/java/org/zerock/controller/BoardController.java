@@ -36,7 +36,15 @@ public class BoardController {
 		
 		model.addAttribute("result", "success");
 		
-		return "/board/success";
+		//return "/board/success";
+		return "redirect:/board/listAll";
+		
+	}
+	
+	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
+	public void listAll(Model model) throws Exception{
+		
+		logger.info("show all list...................");
 	}
 	
 }
