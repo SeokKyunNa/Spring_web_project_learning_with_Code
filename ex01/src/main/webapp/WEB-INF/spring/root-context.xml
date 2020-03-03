@@ -13,9 +13,9 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<!-- org.zerock.persistence 자동 인식을 위한 설정 -->
-	<context:component-scan base-package="org.zerock.service">
-	</context:component-scan>
+	<!-- org.zerock.service 자동 인식을 위한 설정 -->
+	<context:component-scan base-package="org.zerock.persistence"></context:component-scan>
+	<context:component-scan base-package="org.zerock.service"></context:component-scan>
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> -->
