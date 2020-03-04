@@ -1,12 +1,15 @@
 package org.zerock.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -39,6 +42,30 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return session.selectList(namespace + ".listAll");
+	}
+
+	@Override
+	public List<BoardVO> listPage(int page, int numPerPage) throws Exception {
+		
+		numPerPage = 10;		// 한 페이지에 보여줄 게시글의 수
+		
+		if(page <= 0)	page = 1;
+		if(numPerPage <= 0)	numPerPage = 10;
+		
+		int startRow = ((page - 1) * numPerPage) + 1;
+		int endRow = (startRow + numPerPage) - 1;
+		Map m = new HashMap();
+		
+		m.put("startRow", startRow);
+		m.put("endRow", endRow);
+		
+		return session.selectList(namespace + ".listPage", m);
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+		
+		return session.selectList(namespace + ".listCriteria", cri);
 	}
 
 }

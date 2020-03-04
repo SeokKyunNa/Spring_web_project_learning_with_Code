@@ -60,4 +60,40 @@
   		]]>
   	</select>
   	
+  	<select id="listPage" parameterType="java.util.Map" resultType="BoardVO">
+  		<![CDATA[
+  			select * 
+  			from (
+				(select 
+					rownum rnum, N.* 
+				from
+					(select * 
+					from 
+						tbl_board 
+					order by 
+						bno desc) N)
+				)
+			where 
+				rnum between ${startRow} and ${endRow}
+  		]]>
+  	</select>
+  	
+  	<select id="listCriteria" resultType="BoardVO">
+  		<![CDATA[
+  			select * 
+  			from (
+				(select 
+					rownum rnum, N.* 
+				from
+					(select * 
+					from 
+						tbl_board 
+					order by 
+						bno desc) N)
+				)
+			where 
+				rnum between ${startRow} and ${endRow}
+  		]]>
+  	</select>
+  	
   </mapper>
