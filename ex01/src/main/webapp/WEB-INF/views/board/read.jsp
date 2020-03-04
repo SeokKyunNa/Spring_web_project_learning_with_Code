@@ -3,28 +3,30 @@
 
 <%@include file="../include/header.jsp"%>
 
-$(document).ready(function(){
-
-	var formObj = $("form[role='form']");
+<script>
+	$(document).ready(function(){
 	
-	console.log(formObj);
-	
-	$(".btn-warning").on("click", function(){
-		formObj.attr("action", "/board/modify");
-		formObj.attr("method", "get");
-		formObj.submit();
+		var formObj = $("form[role='form']");
+		
+		console.log(formObj);
+		
+		$(".btn-warning").on("click", function(){
+			formObj.attr("action", "/board/modify");
+			formObj.attr("method", "get");
+			formObj.submit();
+		});
+		
+		$(".btn-danger").on("click", function(){
+			formObj.attr("action", "/board/remove");
+			formObj.submit();
+		});
+		
+		$(".btn-primary").on("click", function(){
+			self.location = "/board/listAll";
+		});
+		
 	});
-	
-	$(".btn-danger").on("click", function(){
-		formObj.attr("action", "/board/remove");
-		formObj.submit();
-	});
-	
-	$(".btn-primary").on("click", function(){
-		self.location = "board/listAll";
-	});
-	
-});
+</script>
 
 <form role="form" method="post">
 	<input type='hidden' name='bno' value="${boardVO.bno}">
