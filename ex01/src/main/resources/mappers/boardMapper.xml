@@ -28,7 +28,7 @@
   		from
   			tbl_board
   		where
-  			bno = ${bno}
+  			bno = #{bno}
   	</select>
   	
   	<update id="update">
@@ -37,14 +37,14 @@
   		set
   			title = #{title}, content = #{content}
   		where
-  			bno = ${bno}
+  			bno = #{bno}
   	</update>
   	
   	<delete id="delete">
   		delete from
   			tbl_board
   		where
-  			bno=${bno}
+  			bno=#{bno}
   	</delete>
   	
   	<select id="listAll" resultType="BoardVO">
