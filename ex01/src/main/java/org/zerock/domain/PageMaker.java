@@ -1,5 +1,8 @@
 package org.zerock.domain;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PageMaker {
 
 	private int totalCount;
@@ -11,6 +14,13 @@ public class PageMaker {
 	private int displayPageNum = 10;	// 현재 화면에 보여줄 페이지의 개수
 	
 	private Criteria cri;
+	
+	public String makeQuery(int page) {
+		
+		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page).queryParam("numPerPage", cri.getNumPerPage()).build();
+		
+		return uriComponents.toString();
+	}
 	
 	public void setCri(Criteria cri) {
 		this.cri = cri;
