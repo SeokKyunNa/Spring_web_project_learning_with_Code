@@ -16,7 +16,7 @@ public class PageMaker {
 		this.cri = cri;
 	}
 	
-	public void setTotlalCount(int totalCount) {
+	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 		
 		calcData();
@@ -47,10 +47,6 @@ public class PageMaker {
 
 	public int getTotalCount() {
 		return totalCount;
-	}
-
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
 	}
 
 	public int getStartPage() {
