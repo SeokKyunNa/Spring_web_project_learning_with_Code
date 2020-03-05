@@ -98,7 +98,7 @@ public class BoardController {
 		model.addAttribute("list", service.listCriteria(cri));
 	}
 	
-	/* ??페이지 숫자 처리?? */
+	/* 페이지 하단 숫자 처리 */
 	@RequestMapping(value="/listPage", method=RequestMethod.GET)
 	public void listPage(Criteria cri, Model model) throws Exception{
 		
@@ -107,7 +107,9 @@ public class BoardController {
 		model.addAttribute("list", service.listCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(131);
+		//pageMaker.setTotalCount(131);
+		
+		pageMaker.setTotalCount(service.listCountCriteria(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 	}
