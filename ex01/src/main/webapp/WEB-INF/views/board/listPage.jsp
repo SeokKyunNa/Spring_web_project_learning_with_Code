@@ -7,6 +7,12 @@
 <%@include file="../include/header.jsp"%>
 
 <script>
+	var result = '${msg}'
+	
+	if(result == 'SUCCESS'){
+		alert("처리가 완료되었습니다.");
+	}
+	
 	$(".pageination li a").on("click", function(event){
 		
 		event.preventDefault();
@@ -53,7 +59,7 @@
 						<tr>
 							<td>${boardVO.bno}</td>
 							<td>
-								<a href='/board/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&bno=${boardVo.bno}'>${boardVO.title}</a>
+								<a href='/board/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&bno=${boardVO.bno}'>${boardVO.title}</a>
 							</td>
 							<td>${boardVO.writer}</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}" /></td>

@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +28,13 @@ public class BoardController {
 	/* 조회 */
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void read(@RequestParam("bno") int bno, Model model) throws Exception{
+		
+		model.addAttribute(service.read(bno));
+	}
+	
+	/* 페이지 처리를 포함한 조회 */
+	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
+	public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception{
 		
 		model.addAttribute(service.read(bno));
 	}
@@ -62,9 +70,29 @@ public class BoardController {
 		return "redirect:/board/listAll";
 	}
 	
+	/* 페이지 처리를 포함한 삭제 */
+	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
+	public String remove(@RequestParam("bno") int bno, Criteria cri, RedirectAttributes rttr) throws Exception{
+		
+		service.remove(bno);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("numPerPage", cri.getNumPerPage());
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/board/listPage";
+	}
+	
 	/* 수정 화면 */
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void modifyGET(int bno, Model model) throws Exception {
+		
+		model.addAttribute(service.read(bno));
+	}
+	
+	/* 페이지 처리가 포함된 수정 화면 */
+	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
+	public void modifyPageingGET(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception{
 		
 		model.addAttribute(service.read(bno));
 	}
@@ -79,6 +107,19 @@ public class BoardController {
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
 		return "redirect:/board/listAll";
+	}
+	
+	/* 페이지 처리가 포함된 수정 */
+	@RequestMapping(value = "modifyPage", method = RequestMethod.POST)
+	public String modifyPagingPOST(BoardVO board, Criteria cri, RedirectAttributes rttr) throws Exception{
+		
+		service.modify(board);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("numPerPage", cri.getNumPerPage());
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/board/listPage";
 	}
 	
 	/* 목록 */
