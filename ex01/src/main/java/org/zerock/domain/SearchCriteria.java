@@ -1,6 +1,6 @@
 package org.zerock.domain;
 
-public class SerachCriteria extends Criteria {
+public class SearchCriteria extends Criteria {
 	
 	private String searchType;
 	private String keyword;
