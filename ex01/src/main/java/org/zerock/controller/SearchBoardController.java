@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
-import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.SearchCriteria;
 import org.zerock.service.BoardService;
@@ -26,6 +25,7 @@ public class SearchBoardController {
 	@Inject
 	private BoardService service;
 	
+	/* 목록 화면 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		
@@ -43,12 +43,34 @@ public class SearchBoardController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 	
+	/* 조회 화면 */
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
 	public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
 		
 		model.addAttribute(service.read(bno));
 	}
 	
+	/* 등록 화면 */
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public void registerGET(BoardVO board, Model model) throws Exception{
+		
+		logger.info("register get ..........");
+	}
+	
+	/* 등록 */
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registPOST(BoardVO board, RedirectAttributes rttr) throws Exception{
+		
+		logger.info("regist post ...........");
+		logger.info(board.toString());
+		
+		service.regist(board);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		return "redirect:/sboard/list";
+	}
+	
+	/* 삭제 */
 	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
 	public String remove(@RequestParam("bno") int bno, SearchCriteria cri, RedirectAttributes rttr) throws Exception{
 		
@@ -64,12 +86,14 @@ public class SearchBoardController {
 		return "redirect:/sboard/list";
 	}
 	
+	/* 수정 화면 */
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
 	public void modifyPageingGET(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
 		
 		model.addAttribute(service.read(bno));
 	}
 	
+	/* 수정 */
 	@RequestMapping(value = "modifyPage", method = RequestMethod.POST)
 	public String modifyPagingPOST(BoardVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception{
 		
@@ -85,7 +109,7 @@ public class SearchBoardController {
 		
 		logger.info(rttr.toString());
 		
-		return "redirect:/board/listPage";
+		return "redirect:/sboard/list";
 	}
 	
 }
