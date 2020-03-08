@@ -115,8 +115,8 @@ public class BoardDAOTest {
 		
 		SearchCriteria cri = new SearchCriteria();
 		cri.setPage(1);
-		cri.setKeyword("트03");
-		cri.setSearchType("tcw");
+		cri.setKeyword("7");
+		cri.setSearchType("t");
 		
 		logger.info("======================================");
 		
