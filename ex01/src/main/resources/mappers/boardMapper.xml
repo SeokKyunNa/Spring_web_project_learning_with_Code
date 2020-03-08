@@ -62,41 +62,92 @@
   	
   	<select id="listPage" parameterType="java.util.Map" resultType="BoardVO">
   		<![CDATA[
-  			select * 
-  			from (
-				(select 
-					rownum rnum, N.* 
-				from
-					(select * 
-					from 
-						tbl_board 
-					order by 
-						bno desc) N)
-				)
-			where 
-				rnum between ${startRow} and ${endRow}
+ 		select * 
+ 			from (
+			(select 
+				rownum rnum, N.* 
+			from
+				(select * 
+				from 
+					tbl_board 
+				order by 
+					bno desc) N)
+			)
+		where 
+			rnum between ${startRow} and ${endRow}
   		]]>
   	</select>
   	
   	<select id="listCriteria" resultType="BoardVO">
   		<![CDATA[
-  			select * 
-  			from (
-				(select 
-					rownum rnum, N.* 
-				from
-					(select * 
-					from 
-						tbl_board 
-					order by 
-						bno desc) N)
-				)
-			where 
-				rnum between ${startRow} and ${endRow}
+ 		select * 
+ 			from (
+			(select 
+				rownum rnum, N.* 
+			from
+				(select * 
+				from 
+					tbl_board 
+				order by 
+					bno desc) N)
+			)
+		where 
+			rnum between ${startRow} and ${endRow}
   		]]>
   	</select>
   	
   	<select id="countPaging" resultType="int">
+  		<![CDATA[
+  		select
+  			count(bno)
+  		from
+  			tbl_board
+  		where
+  			bno > 0
+  		]]>
+  	</select>
+  	
+  	<select id="listSearch" resultType="BoardVO">
+  		<![CDATA[
+  		select * 
+		from (
+			(select 
+				rownum rnum, N.* 
+			from
+				(select * 
+				from 
+					tbl_board 
+		]]>
+		<if test="searchType != null">
+  			<if test="searchType == 't'.toString()">
+  				where title like CONCAT(CONCAT('%', #{keyword}), '%')
+  			</if>
+  			<if test="searchType == 'c'.toString()">
+  				where content like CONCAT(CONCAT('%', #{keyword}), '%')
+  			</if>
+  			<if test="searchType == 'w'.toString()">
+  				where writer like CONCAT(CONCAT('%', #{keyword}), '%')
+  			</if>
+  			<if test="searchType == 'tc'.toString()">
+  				where (title like CONCAT(CONCAT('%', #{keyword}), '%') OR content like CONCAT(CONCAT('%', #{keyword}), '%'))
+  			</if>
+  			<if test="searchType == 'cw'.toString()">
+  				where (content like CONCAT(CONCAT('%', #{keyword}), '%') OR writer like CONCAT(CONCAT('%', #{keyword}), '%'))
+  			</if>
+  			<if test="searchType == 'tcw'.toString()">
+  				where (title like CONCAT(CONCAT('%', #{keyword}), '%') OR content like CONCAT(CONCAT('%', #{keyword}), '%') OR writer like CONCAT(CONCAT('%', #{keyword}), '%'))
+  			</if>
+  		</if>
+		<![CDATA[
+				order by 
+					bno desc) N)
+			)
+		where 
+			rnum between ${startRow} and ${endRow}
+  		]]>
+  	</select>
+  	
+  	<select id="listSearchCount" resultType="int">
   		<![CDATA[
   		select
   			count(bno)

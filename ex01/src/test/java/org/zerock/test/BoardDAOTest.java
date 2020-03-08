@@ -1,5 +1,7 @@
 package org.zerock.test;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -7,8 +9,8 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.zerock.domain.BoardVO;
+import org.zerock.domain.SearchCriteria;
 import org.zerock.persistence.BoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -86,7 +88,7 @@ public class BoardDAOTest {
 		}
 	}
 	*/
-	
+	/*
 	@Test
 	public void testURI() throws Exception{
 		
@@ -95,8 +97,8 @@ public class BoardDAOTest {
 		logger.info("/board/read?bno=12&numPerPage=20");
 		logger.info(uriComponents.toString());
 	}
-	
-	
+	*/
+	/*
 	@Test
 	public void testURI2() throws Exception{
 		
@@ -106,4 +108,27 @@ public class BoardDAOTest {
 		logger.info("/board/read?bno=12&numPerPage=20");
 		logger.info(uriComponents.toString());
 	}
+	*/
+	
+	@Test
+	public void testDynamic1() throws Exception{
+		
+		SearchCriteria cri = new SearchCriteria();
+		cri.setPage(1);
+		cri.setKeyword("트03");
+		cri.setSearchType("tcw");
+		
+		logger.info("======================================");
+		
+		List<BoardVO> list = dao.listSearch(cri);
+		
+		for(BoardVO boardVO : list) {
+			logger.info(boardVO.getBno() + " : " + boardVO.getTitle());
+		}
+		
+		logger.info("======================================");
+		
+		logger.info("COUNT : " + dao.listSearchCount(cri));
+	}
+	
 }
