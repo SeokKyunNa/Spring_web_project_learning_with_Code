@@ -1,4 +1,4 @@
--- 순번 생성을 위한 sequences 테이블
+-- 순번 생성을 위한 sequence 테이블
 create sequence seq_board start with 1 increment by 1 nocache
 
 -- BOARD TABLE
