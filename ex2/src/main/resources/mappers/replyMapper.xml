@@ -11,8 +11,8 @@
 		from
 			tbl_reply
 		where
-			where bno = #{bno}
-		oredr by
+			bno = #{bno}
+		order by
 			rno desc
 	</select>
 	
