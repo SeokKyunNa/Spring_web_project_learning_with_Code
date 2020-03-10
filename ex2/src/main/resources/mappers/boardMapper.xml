@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="org.zerock.mapper.BoardMapper">
+  
+  	<insert id="create">
+  		insert into tbl_board 
+  			(title, content, writer)
+  		values 
+  			(#{title}, #{content}, #{writer})
+  	</insert>
+  	
+  	<!-- <resultMap id="readMap" type="HashMap">
+  		<result property="bno" column="bno" />
+  		<result property="title" column="title" />
+  		<result property="content" column="title" jdbcType="CLOB" javaType="java.lang.String" />
+  		<result property="writer" column="writer" />
+  		<result property="regdate" column="regdate" />
+  		<result property="viewcnt" column="viewcnt" />
+  	</resultMap> -->
+  	
+  	<!-- <select id="read" parameterType="java.util.HashMap" resultMap="readMap"> -->
+  	<select id="read" resultType="BoardVO">
+  		select
+  			bno, title, content, writer, regdate, updatedate, viewcnt
+  		from
+  			tbl_board
+  		where
+  			bno = #{bno}
+  	</select>
+  	
+  	<update id="update">
+  		update
+  			tbl_board
+  		set
+  			title = #{title}, content = #{content}
+  		where
+  			bno = #{bno}
+  	</update>
+  	
+  	<delete id="delete">
+  		delete from
+  			tbl_board
+  		where
+  			bno=#{bno}
+  	</delete>
+  	
+  	<select id="listAll" resultType="BoardVO">
+  		<![CDATA[
+  		select
+  			bno, title, content, writer, regdate, updatedate, viewcnt
+  		from
+  			tbl_board
+  		where
+  			bno > 0
+  		order by
+  			bno desc, regdate desc
+  		]]>
+  	</select>
+  	
+  	<select id="listPage" parameterType="java.util.Map" resultType="BoardVO">
+  		<![CDATA[
+ 		select * 
+ 			from (
+			(select 
+				rownum rnum, N.* 
+			from
+				(select * 
+				from 
+					tbl_board 
+				order by 
+					bno desc) N)
+			)
+		where 
+			rnum between ${startRow} and ${endRow}
+  		]]>
+  	</select>
+  	
+  	<select id="listCriteria" resultType="BoardVO">
+  		<![CDATA[
+ 		select * 
+ 			from (
+			(select 
+				rownum rnum, N.* 
+			from
+				(select * 
+				from 
+					tbl_board 
+				order by 
+					bno desc) N)
+			)
+		where 
+			rnum between ${startRow} and ${endRow}
+  		]]>
+  	</select>
+  	
+  	<select id="countPaging" resultType="int">
+  		<![CDATA[
+  		select
+  			count(bno)
+  		from
+  			tbl_board
+  		where
+  			bno > 0
+  		]]>
+  	</select>
+  	
+  	<sql id="search">
+		<if test="searchType != null">
+  			<if test="searchType == 't'.toString()">
+  				where title like CONCAT(CONCAT('%', #{keyword}), '%')
+  			</if>
+  			<if test="searchType == 'c'.toString()">
+  				where content like CONCAT(CONCAT('%', #{keyword}), '%')
+  			</if>
+  			<if test="searchType == 'w'.toString()">
+  				where writer like CONCAT(CONCAT('%', #{keyword}), '%')
+  			</if>
+  			<if test="searchType == 'tc'.toString()">
+  				where (title like CONCAT(CONCAT('%', #{keyword}), '%') OR content like CONCAT(CONCAT('%', #{keyword}), '%'))
+  			</if>
+  			<if test="searchType == 'cw'.toString()">
+  				where (content like CONCAT(CONCAT('%', #{keyword}), '%') OR writer like CONCAT(CONCAT('%', #{keyword}), '%'))
+  			</if>
+  			<if test="searchType == 'tcw'.toString()">
+  				where (title like CONCAT(CONCAT('%', #{keyword}), '%') OR content like CONCAT(CONCAT('%', #{keyword}), '%') OR writer like CONCAT(CONCAT('%', #{keyword}), '%'))
+  			</if>
+  		</if>
+	</sql>
+  		
+  	<select id="listSearch" resultType="BoardVO">
+  		<![CDATA[
+  		select * 
+		from (
+			(select 
+				rownum rnum, N.* 
+			from
+				(select * 
+				from 
+					tbl_board 
+		]]>
+		
+		<include refid="search"></include>
+		
+  		
+		<![CDATA[
+				order by 
+					bno desc) N)
+			)
+		where 
+			rnum between ${startRow} and ${endRow}
+  		]]>
+  	</select>
+  	
+  	<select id="listSearchCount" resultType="int">
+  		<![CDATA[
+  		select 
+  			count(bno)
+		from 
+			tbl_board 
+		]]>
+		
+		<include refid="search"></include>
+		
+  	</select>
+  </mapper>
