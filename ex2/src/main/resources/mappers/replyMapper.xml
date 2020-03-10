@@ -23,11 +23,11 @@
 			(#{bno}, #{replytext}, #{replyer})
 	</insert>
 	
-	<update id="udate">
+	<update id="update">
 		update
 			tbl_reply
 		set
-			replytext = #{repplytext}, updatedate = systimestamp
+			replytext = #{replytext}, updatedate = systimestamp
 		where
 			rno = #{rno}
 	</update>
