@@ -48,7 +48,9 @@
 			from
 				(select * 
 				from 
-					tbl_board 
+					tbl_reply
+				where
+					bno = #{bno}
 				order by 
 					bno desc) N)
 			)

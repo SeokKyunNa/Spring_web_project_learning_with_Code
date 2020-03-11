@@ -8,18 +8,35 @@
 
 <style>
 
-	#modDiv{
-		width:300px;
-		height:100px;
-		background-color: gray;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-top: -50px;
-		margin-left: -150px;
-		padding: 10px;
-		z-index: 1000;
-	}
+#modDiv{
+	width:300px;
+	height:100px;
+	background-color: gray;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -150px;
+	padding: 10px;
+	z-index: 1000;
+}
+
+.pagination {
+	width: 100%;
+}
+
+.pagination li{
+	list-style: none;
+	float: left; 
+	padding: 3px; 
+	border: 1px solid blue;
+	margin:3px;  
+}
+
+.pagination li a{
+	margin: 3px;
+	text-decoration: none;  
+}
 
 </style>
 </head>
@@ -53,13 +70,19 @@
 	<ul id="replies">
 	</ul>
 	
+	<ul class='pagination'>
+	</ul>
+	
 	<!-- jQuery 2.1.4 -->
 	<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	
 	<script>
 		var bno = 50;	/* 테스트용 bno 강제 입력 */
+		//getAllList();
+		getPageList(1);
 		
 		function getAllList(){
+			
 			$.getJSON("/replies/all/" + bno, function(data){
 				
 				var str = "";
@@ -75,6 +98,45 @@
 				
 			$("#replies").html(str);
 			});
+		}
+		
+		function getPageList(page){
+			
+			$.getJSON("/replies/" + bno + "/" + page, function(data){
+				
+				//console.log(data.list.length);
+				console.log(data);
+				
+				var str = "";
+				
+				$(data.list).each(function(){
+					str += "<li data-rno='" + this.rno + "' class='replyLi'>" + this.rno + ":" + this.replytext + "<button>MOD</button></li>"
+				});
+				
+				$("#replies").html(str);
+				
+				pringPaging(data.pageMaker);
+			});
+		}
+		
+		function pringPaging(pageMaker){
+			
+			var str = "";
+			
+			if(pageMaker.prev){
+				str += "<li><a href='" + (pageMaker.startPage - 1) + "'> << </a></li>";
+			}
+			
+			for(var i = pageMaker.startPage, len = pageMaker.endPage; i <= len; i++){
+				var strClass = pageMaker.cri.page == i?'class=active':'';
+				str += "<li " + strClass + "><a href='" + i + "'>" + i + "</a></li>";
+			}
+			
+			if(pageMaker.next){
+				str += "<li><a href='" + (pageMaker.endPage + 1) + "'> >> </a></li>";
+			}
+			
+			$('.pagination').html(str);
 		}
 		
 		/* 댓글 추가 */
@@ -170,6 +232,18 @@
 					}
 				}
 			});
+		});
+		
+		/* 페이징 처리 */
+		var replyPage = 1;
+		
+		$(".pagination").on("click", "li a", function(event){
+			
+			event.preventDefault();
+			
+			replyPage = $(this).attr("href");
+			
+			getPageList(replyPage);
 		});
 	</script>
 </body>
