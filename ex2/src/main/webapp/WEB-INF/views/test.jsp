@@ -160,7 +160,10 @@
 					if(result == 'SUCCESS'){
 						alert("등록 되었습니다.");
 						
-						getAllList();
+						$("#newReplyWriter").val("");
+						$("#newReplyText").val("");
+						//getAllList();
+						getPageList(replyPage);
 					}
 				}
 			})
@@ -198,7 +201,9 @@
 					if(result == 'SUCCESS'){
 						alert("삭제 되었습니다.");
 						$("#modDiv").hide("slow");
-						getAllList();
+
+						//getAllList();
+						getPageList(replyPage);
 					}
 				}
 			});
@@ -226,8 +231,8 @@
 					if(result == 'SUCCESS'){
 						alert("수정 되었습니다.");
 						$("#modDiv").hide("slow");
-						getAllList();
-						//getPageList(replyPage); 
+						//getAllList();
+						getPageList(replyPage); 
 					}
 				}
 			});
