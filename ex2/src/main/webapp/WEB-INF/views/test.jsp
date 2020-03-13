@@ -104,8 +104,7 @@
 			
 			$.getJSON("/replies/" + bno + "/" + page, function(data){
 				
-				//console.log(data.list.length);
-				console.log(data);
+				console.log(data.list.length);
 				
 				var str = "";
 				
@@ -233,6 +232,13 @@
 				}
 			});
 		});
+		/* closeBtn 닫기 */
+		$("#closeBtn").on("click", function(){
+			
+			$("#modDiv").hide("slow");
+			
+		});
+		
 		
 		/* 페이징 처리 */
 		var replyPage = 1;
