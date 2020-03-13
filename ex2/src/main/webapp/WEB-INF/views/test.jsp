@@ -81,6 +81,7 @@
 		//getAllList();
 		getPageList(1);
 		
+		/* 전체 목록 */
 		function getAllList(){
 			
 			$.getJSON("/replies/all/" + bno, function(data){
@@ -100,16 +101,20 @@
 			});
 		}
 		
+		/* 페이징 목록 */
 		function getPageList(page){
 			
 			$.getJSON("/replies/" + bno + "/" + page, function(data){
 				
-				console.log(data.list.length);
+				//console.log(data.list.length);
+				console.log(data);
 				
 				var str = "";
 				
 				$(data.list).each(function(){
-					str += "<li data-rno='" + this.rno + "' class='replyLi'>" + this.rno + ":" + this.replytext + "<button>MOD</button></li>"
+					str += "<li data-rno='" + this.rno + "' class='replyLi'>" 
+						+ this.bno + " - " + this.rno + " : " + this.replytext + ", " + this.replyer
+						+ "<button>MOD</button></li>"
 				});
 				
 				$("#replies").html(str);
@@ -138,7 +143,7 @@
 			$('.pagination').html(str);
 		}
 		
-		/* 댓글 추가 */
+		/* 버튼 - 댓글 추가 */
 		$("#replyAddBtn").on("click", function(){
 			var replyer = $("#newReplyWriter").val();
 			var replytext = $("#newReplyText").val();
@@ -169,7 +174,7 @@
 			})
 		});
 		
-		/* 댓글 수정 버튼 */
+		/* 버튼 - 댓글 수정창 */
 		$("#replies").on("click", ".replyLi button", function(){
 			
 			var reply = $(this).parent();
@@ -182,7 +187,7 @@
 			$("#modDiv").show("slow");
 		});
 		
-		/* 댓글 삭제 */ 
+		/* 버튼 - 댓글 삭제 */ 
 		$("#replyDelBtn").on("click", function(){
 			
 			var rno = $(".modal-title").html();
@@ -209,7 +214,7 @@
 			});
 		});
 		
-		/* 댓글 수정 */
+		/* 버튼 - 댓글 수정 */
 		$("#replyModBtn").on("click", function(){
 			
 			var rno = $(".modal-title").html();
@@ -237,7 +242,7 @@
 				}
 			});
 		});
-		/* closeBtn 닫기 */
+		/* 버튼 - 닫기 */
 		$("#closeBtn").on("click", function(){
 			
 			$("#modDiv").hide("slow");

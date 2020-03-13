@@ -52,7 +52,7 @@
 				where
 					bno = #{bno}
 				order by 
-					bno desc) N)
+					rno desc) N)
 			)
 		where 
 			rnum between ${cri.startRow} and ${cri.endRow}

@@ -91,7 +91,7 @@ public class ReplyController {
 		return entity;
 	}
 	
-	/* 댓글 목록 */
+	/* 댓글 페이지 목록 */
 	@RequestMapping(value = "/{bno}/{page}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> listPage(@PathVariable("bno") Integer bno, @PathVariable("page") Integer page){
 		
