@@ -3,6 +3,9 @@
 
 <%@include file="../include/header.jsp"%>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
 <form role="form" action="modifyPage" method="post">
 
 	<input type='hidden' name='bno' value="${boardVO.bno}">
@@ -119,9 +122,9 @@
 </script>
 
 <script>
-	Handlebars.registerHelper("prettifyData", function(timeValue){
-		var dateObj = new Data(timeValue);
-		var year = dataObj.getFullYear();
+	Handlebars.registerHelper("prettifyDate", function(timeValue){
+		var dateObj = new Date(timeValue);
+		var year = dateObj.getFullYear();
 		var month = dateObj.getMonth() + 1;
 		var date = dateObj.getDate();
 		return year + "/" + month + "/" + date;
@@ -143,18 +146,18 @@
 		
 		$.getJSON(pageInfo, function(data){
 			printData(data.list, $("#repliesDiv"), $('#template'));
-			printPaging(data.pageMaekr, $(".pagination"));
+			printPaging(data.pageMaker, $(".pagination"));
 			
 			$("#modifyModal").modal('hide');
 		});
 	}
 	
-	var pringPaging = function(pageMaker, target){
+	var printPaging = function(pageMaker, target){
 		
 		var str = "";
 		
 		if(pageMaker.prev){
-			str += "<li><a href='" + (pageMaker.startPage-1) + "'> << </a></li>";
+			str += "<li><a href='" + (pageMaker.startPage - 1) + "'> << </a></li>";
 		};
 		
 		for(var i = pageMaker.startPage, len = pageMaker.endPage; i <= len; i++){
@@ -163,7 +166,7 @@
 		}
 		
 		if(pageMaker.next){
-			str += "<li><a href='" + (pageMaker.endPage-1) + "'> << </a></li>";
+			str += "<li><a href='" + (pageMaker.endPage + 1) + "'> >> </a></li>";
 		}
 		
 		target.html(str);
@@ -174,7 +177,7 @@
 		if($(".timeline li").size() > 1){
 			return;
 		}
-		getPage("replies/" + bno + "/1");
+		getPage("/replies/" + bno + "/1");
 	});
 	
 	$(".pagination").on("click", "li a", function(event){
