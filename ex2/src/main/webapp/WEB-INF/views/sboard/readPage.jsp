@@ -210,6 +210,7 @@
 		getPage("/replies/" + bno + "/" + replyPage);
 	});
 	
+	/* 댓글 추가 버튼 */
 	$("#replyAddBtn").on("click", function(){
 
 		var replyerObj = $("#newReplyWriter");
@@ -245,6 +246,55 @@
 		
 		$("#replytext").val(reply.find('.timeline-body').text());
 		$(".modal-title").html(reply.attr("data-rno"));
+	});
+	
+	/* 댓글 수정 버튼 */
+	$("#replyModBtn").on("click", function(){
+		
+		var rno = $(".modal-title").html();
+		var replytext = $("#replytext").val();
+		
+		$.ajax({
+			type : 'put',
+			url : '/replies/' + rno,
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "PUT"
+			},
+			data : JSON.stringify({replytext:replytext}),
+			dataType : 'text',
+			success : function(result){
+				console.log("result : " + result);
+				if(result == 'SUCCESS'){
+					alert("수정 되었습니다.");
+					getPage("/replies/" + bno + "/" + replyPage);
+				}
+			}
+		});
+	});
+	
+	/* 댓글 삭제 버튼 */
+	$("#replyDelBtn").on("click", function(){
+		
+		var rno = $(".modal-title").html();
+		var replytext = $("#replytext").val();
+		
+		$.ajax({
+			type : 'delete',
+			url : '/replies/' + rno,
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "DELETE"
+			},
+			dataType : 'text',
+			success : function(result){
+				console.log("result : " + result);
+				if(result == 'SUCCESS'){
+					alert("삭제 되었습니다.");
+					getPage("/replies/" + bno + "/" + replyPage);
+				}
+			}
+		});
 	});
 </script>
 
