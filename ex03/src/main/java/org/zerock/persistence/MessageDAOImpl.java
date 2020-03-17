@@ -17,7 +17,7 @@ public class MessageDAOImpl implements MessageDAO {
 	@Override
 	public void create(MessageVO vo) throws Exception {
 
-		session.insert(namespace + ".creat", vo);
+		session.insert(namespace + ".create", vo);
 	}
 
 	@Override
