@@ -1,7 +1,5 @@
 package org.zerock.test;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -9,18 +7,27 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.zerock.domain.BoardVO;
-import org.zerock.domain.SearchCriteria;
-import org.zerock.persistence.BoardDAO;
+import org.zerock.domain.MessageVO;
+import org.zerock.persistence.MessageDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
-public class BoardDAOTest {
+public class MessageDAOTest {
 
 	@Inject
-	private BoardDAO dao;
+	private MessageDAO dao;
 	
-	private static Logger logger = org.slf4j.LoggerFactory.getLogger(BoardDAOTest.class);
+	private static Logger logger = org.slf4j.LoggerFactory.getLogger(MessageDAOTest.class);
+	
+	@Test
+	public void testAddMessage() throws Exception{
+		MessageVO message = new MessageVO();
+		message.setMessage("Good Luck!");
+		message.setTargetid("user01");
+		message.setSender("user00");
+		
+		dao.create(message);
+	}
 	/*
 	@Test
 	public void testCreate() throws Exception{

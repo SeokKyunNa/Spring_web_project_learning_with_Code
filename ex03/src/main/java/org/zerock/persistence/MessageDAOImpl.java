@@ -11,9 +11,9 @@ public class MessageDAOImpl implements MessageDAO {
 
 	@Inject
 	private SqlSession session;
-	
+
 	private static String namespace = "org.zerock.mapper.MessageMapper";
-	
+
 	@Override
 	public void create(MessageVO vo) throws Exception {
 
@@ -21,15 +21,15 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 
 	@Override
-	public MessageVO readMessage(Integer mno) throws Exception {
+	public MessageVO readMessage(Integer mid) throws Exception {
 
-		return session.selectOne(namespace + ".readMessage", mno);
+		return session.selectOne(namespace + ".readMessage", mid);
 	}
 
 	@Override
-	public void updateState(Integer mno) throws Exception {
+	public void updateState(Integer mid) throws Exception {
 
-		session.update(namespace + ".updateState", mno);
+		session.update(namespace + ".updateState", mid);
 	}
 
 }

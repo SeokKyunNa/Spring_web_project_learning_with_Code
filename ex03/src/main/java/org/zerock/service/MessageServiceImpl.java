@@ -24,12 +24,12 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public MessageVO readMessage(String uid, Integer mno) throws Exception {
+	public MessageVO readMessage(String uid, Integer mid) throws Exception {
 
-		messageDAO.updateState(mno);
+		messageDAO.updateState(mid);
 		pointDAO.updatePoint(uid, 5);
 		
-		return messageDAO.readMessage(mno);
+		return messageDAO.readMessage(mid);
 	}
 
 }

@@ -20,7 +20,7 @@ public class MessageController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ResponseEntity<String> addMessage(@RequestBody MessageVO vo){
-		
+
 		ResponseEntity<String> entity = null;
 		try {
 			service.addMessage(vo);

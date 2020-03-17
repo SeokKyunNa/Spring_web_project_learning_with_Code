@@ -4,18 +4,18 @@ import java.util.Date;
 
 public class MessageVO {
 
-	private Integer mno;
+	private Integer mid;
 	private String targetid;
 	private String sender;
 	private String message;
-	private Date openDate;
+	private Date opendate;
 	private Date senddate;
 	
-	public Integer getMid() {
-		return mno;
+	public Integer getMno() {
+		return mid;
 	}
-	public void setMid(Integer mno) {
-		this.mno = mno;
+	public void setMno(Integer mid) {
+		this.mid = mid;
 	}
 	public String getTargetid() {
 		return targetid;
@@ -35,11 +35,11 @@ public class MessageVO {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public Date getOpenDate() {
-		return openDate;
+	public Date getOpendate() {
+		return opendate;
 	}
-	public void setOpenDate(Date openDate) {
-		this.openDate = openDate;
+	public void setOpendate(Date opendate) {
+		this.opendate = opendate;
 	}
 	public Date getSenddate() {
 		return senddate;
@@ -50,8 +50,8 @@ public class MessageVO {
 	
 	@Override
 	public String toString() {
-		return "MessageVO [mno=" + mno + ", targetid=" + targetid + ", sender=" + sender + ", message=" + message
-				+ ", openDate=" + openDate + ", senddate=" + senddate + "]";
+		return "MessageVO [mid=" + mid + ", targetid=" + targetid + ", sender=" + sender + ", message=" + message
+				+ ", opendate=" + opendate + ", senddate=" + senddate + "]";
 	}
 	
 }

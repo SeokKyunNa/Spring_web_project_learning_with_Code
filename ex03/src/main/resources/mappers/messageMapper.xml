@@ -15,7 +15,7 @@
 		from
 			tbl_message
 		where
-			mno = #{mno}
+			mid = #{mid}
 	</select>
 	
 	<update id="updateState">
@@ -23,7 +23,7 @@
 			tbl_message
 		set
 			opendate = systimestamp
-		where mno = #{mno}
+		where mid = #{mid}
 	</update>
 	
 </mapper>  
