@@ -1,4 +1,4 @@
-package com.zerock.persistence;
+package org.zerock.persistence;
 
 import java.util.HashMap;
 import java.util.Map;

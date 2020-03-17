@@ -1,4 +1,4 @@
-package com.zerock.domain;
+package org.zerock.domain;
 
 public class UserVO {
 

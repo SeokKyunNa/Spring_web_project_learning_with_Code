@@ -1,6 +1,6 @@
-package com.zerock.persistence;
+package org.zerock.persistence;
 
-import com.zerock.domain.MessageVO;
+import org.zerock.domain.MessageVO;
 
 public interface MessageDAO {
 

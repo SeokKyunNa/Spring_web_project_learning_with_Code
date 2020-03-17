@@ -1,6 +1,6 @@
-package com.zerock.service;
+package org.zerock.service;
 
-import com.zerock.domain.MessageVO;
+import org.zerock.domain.MessageVO;
 
 public interface MessageService {
 

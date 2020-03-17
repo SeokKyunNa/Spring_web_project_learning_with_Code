@@ -1,11 +1,10 @@
-package com.zerock.persistence;
+package org.zerock.persistence;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-
-import com.zerock.domain.MessageVO;
+import org.zerock.domain.MessageVO;
 
 @Repository
 public class MessageDAOImpl implements MessageDAO {

@@ -1,4 +1,4 @@
-package com.zerock.persistence;
+package org.zerock.persistence;
 
 public interface PointDAO {
 

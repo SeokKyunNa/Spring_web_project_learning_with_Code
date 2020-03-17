@@ -17,6 +17,10 @@
 	<!-- org.zerock.service 자동 인식을 위한 설정 -->
 	<context:component-scan base-package="org.zerock.persistence"></context:component-scan>
 	<context:component-scan base-package="org.zerock.service"></context:component-scan>
+	<context:component-scan base-package="org.zerock.aop"></context:component-scan>
+	
+	<aop:config>
+	</aop:config>
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> -->
