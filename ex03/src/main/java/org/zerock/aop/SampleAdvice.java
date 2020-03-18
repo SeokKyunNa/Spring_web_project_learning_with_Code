@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class SampleAdvice {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SampleAdvice.class);
-	
+	/*
 	@Before("execution(* org.zerock.service.MessageService*.*(..))")
 	public void startLog(JoinPoint jp) {
 		
@@ -39,5 +39,5 @@ public class SampleAdvice {
 		
 		return result;
 	}
-
+*/
 }
