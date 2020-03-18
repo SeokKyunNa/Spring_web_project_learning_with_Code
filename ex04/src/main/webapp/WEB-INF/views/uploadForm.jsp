@@ -5,7 +5,7 @@
 iframe{
 	width : 0px;
 	heigh : 0px;
-	border : 0px
+	border : 0px;
 }
 </style>
 </head>
