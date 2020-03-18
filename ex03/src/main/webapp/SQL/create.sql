@@ -14,6 +14,12 @@ CREATE TABLE TBL_BOARD
     PRIMARY KEY (BNO)
 );
 
+alter table tbl_board add replycnt number default 0;
+
+update tbl_board set replycnt =
+    (select count(rno) from tbl_reply where bno = tbl_board.bno)
+where bno > 0;
+
 --DROP SEQUENCE SEQ_BOARD
 --DROP TABLE TBL_BOARD
 
