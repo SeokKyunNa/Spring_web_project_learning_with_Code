@@ -1,9 +1,13 @@
 package org.zerock.util;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
+import javax.imageio.ImageIO;
+
+import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,12 +15,14 @@ public class UploadFileUtils {
 
 	private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
 	
+	/* 파일 경로 */
 	public static String uploadFile(String uploadPath, String originalName, byte[] fileData) throws Exception{
 		
 		return null;
 		
 	}
 	
+	/* 파일 경로 적용 */
 	private static String calcPath(String uploadPath) {
 		
 		Calendar cal = Calendar.getInstance();
@@ -35,6 +41,7 @@ public class UploadFileUtils {
 		
 	}
 	
+	/* 파일 경로 생성 */
 	private static void makeDir(String uploadPath, String...paths) {
 		
 		if(new File(uploadPath + paths[paths.length - 1]).exists()) {
@@ -47,5 +54,23 @@ public class UploadFileUtils {
 				dirPath.mkdir();
 			}
 		}
+	}
+	
+	/* 썸네일 생성 */
+	private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception{
+		
+		BufferedImage sourceImg = ImageIO.read(new File(uploadPath + path, fileName));
+		
+		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
+		
+		String thumbnailName = uploadPath + path + File.pathSeparator + "s_" + fileName;
+		
+		File newFile = new File(thumbnailName);
+		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+		
+		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
+		
+		return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar, '/');
+		
 	}
 }
