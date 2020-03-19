@@ -4,22 +4,43 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.UUID;
 
 import javax.imageio.ImageIO;
 
 import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.FileCopyUtils;
 
 public class UploadFileUtils {
 
 	private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
 	
-	/* 파일 경로 */
+	/* 파일 업로드 */
 	public static String uploadFile(String uploadPath, String originalName, byte[] fileData) throws Exception{
 		
-		return null;
+		UUID uid = UUID.randomUUID();
 		
+		String savedName = uid.toString() + "_" + originalName;
+		
+		String savedPath = calcPath(uploadPath);
+		
+		File target = new File(uploadPath + savedPath, savedName);
+		
+		FileCopyUtils.copy(fileData, target);
+		
+		String formatName = originalName.substring(originalName.lastIndexOf(".") + 1);
+		
+		String uploadedFileName = null;
+		
+		if(MediaUtils.getMediaType(formatName) != null) {
+			uploadedFileName = makeThumbnail(uploadPath, savedPath, savedName);
+		} else {
+			uploadedFileName = makeIcon(uploadPath, savedPath, savedName);
+		}
+		
+		return uploadedFileName;
 	}
 	
 	/* 파일 경로 적용 */
@@ -73,4 +94,13 @@ public class UploadFileUtils {
 		return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar, '/');
 		
 	}
+	
+	/* 이미지 파일이 아닌 경우 아이콘 생성 */
+	private static String makeIcon(String uploadPath, String path, String fileName) throws Exception{
+		
+		String iconName = uploadPath + path + File.pathSeparator + fileName;
+		
+		return iconName.substring(uploadPath.length()).replace(File.separatorChar, '/');
+	}
+	
 }
