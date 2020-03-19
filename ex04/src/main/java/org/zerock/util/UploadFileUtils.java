@@ -48,9 +48,9 @@ public class UploadFileUtils {
 		
 		Calendar cal = Calendar.getInstance();
 		
-		String yearPath = File.pathSeparator + cal.get(Calendar.YEAR);	// file.pathSeparator = 파일구분자
+		String yearPath = File.separator + cal.get(Calendar.YEAR);	// file.pathSeparator = 파일구분자
 		
-		String monthPath = yearPath + File.pathSeparator + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);	// Calendar.MONTH 는 0부터 시작 (1월은 0)
+		String monthPath = yearPath + File.separator + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);	// Calendar.MONTH 는 0부터 시작 (1월은 0)
 		
 		String datePath = monthPath + File.separator + new DecimalFormat("00").format(cal.get(Calendar.DATE));
 		
@@ -84,7 +84,7 @@ public class UploadFileUtils {
 		
 		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
 		
-		String thumbnailName = uploadPath + path + File.pathSeparator + "s_" + fileName;
+		String thumbnailName = uploadPath + path + File.separator + "s_" + fileName;
 		
 		File newFile = new File(thumbnailName);
 		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
@@ -98,7 +98,7 @@ public class UploadFileUtils {
 	/* 이미지 파일이 아닌 경우 아이콘 생성 */
 	private static String makeIcon(String uploadPath, String path, String fileName) throws Exception{
 		
-		String iconName = uploadPath + path + File.pathSeparator + fileName;
+		String iconName = uploadPath + path + File.separator + fileName;
 		
 		return iconName.substring(uploadPath.length()).replace(File.separatorChar, '/');
 	}
