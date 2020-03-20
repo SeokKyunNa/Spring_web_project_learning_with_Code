@@ -34,6 +34,7 @@ public class UploadController {
 		
 	}
 	
+	/* 업로드 경로 */
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 	@RequestMapping(value = "/uploadForm", method = RequestMethod.POST)
@@ -51,6 +52,7 @@ public class UploadController {
 		
 	}
 	
+	/* 파일 이름 처리 */
 	private String uploadFile(String originalName, byte[] fileData) throws Exception{
 		
 		UUID uid = UUID.randomUUID();
@@ -70,6 +72,7 @@ public class UploadController {
 		
 	}
 	
+	/* 업로드 페이지 */
 	@ResponseBody
 	@RequestMapping(value = "/uploadAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception{
@@ -83,6 +86,7 @@ public class UploadController {
 		
 	}
 	
+	/* 파일 미리보기 */
 	@ResponseBody
 	@RequestMapping("/displayFile")
 	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception{
@@ -118,5 +122,28 @@ public class UploadController {
 		}
 		
 		return entity;
+	}
+	
+	/* 파일 삭제 */
+	@ResponseBody
+	@RequestMapping(value="/deleteFile", method = RequestMethod.POST)
+	public ResponseEntity<String> deleteFile(String fileName){
+		
+		logger.info("delete file : " + fileName);
+		
+		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+		
+		MediaType mType = MediaUtils.getMediaType(formatName);
+		
+		/* 이미지 파일의 경우 썸네일도 삭제 */
+		if(mType != null) {
+			String front = fileName.substring(0, 12);
+			String end = fileName.substring(14);
+			new File(uploadPath + (front + end).replace('/',  File.separatorChar)).delete();
+		}
+		
+		new File(uploadPath + fileName.replace('/',  File.separatorChar)).delete();
+		
+		return new ResponseEntity<String>("deleted", HttpStatus.OK);
 	}
 }
