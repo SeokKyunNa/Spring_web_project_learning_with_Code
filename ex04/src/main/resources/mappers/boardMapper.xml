@@ -174,4 +174,10 @@
   			bno = #{bno}
   	</update>
   	
+  	<insert id="addAttach">
+  		insert into tbl_attach
+  			(fullname)
+  		values
+  			(#{fullName})
+  	</insert>
   </mapper>
