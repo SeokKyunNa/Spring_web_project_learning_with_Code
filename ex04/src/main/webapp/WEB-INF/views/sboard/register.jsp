@@ -13,7 +13,7 @@
 }
 </style>
 
-<form role="form" method="post">
+<form id='registerForm' role="form" method="post">
 	<div class="box-body">
 		<div class="form_group">
 			<label for="exampleInputEmail1">Title</label>
@@ -46,7 +46,7 @@
 	</div>
 </form>
 
-<script src="https://ccdnjs.coludflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 
 <script id="template" type="text/x-handlebars-template">
@@ -75,19 +75,18 @@
 		event.preventDefault();
 		
 		var files = event.originalEvent.dataTransfer.files;
-		
 		var file = files[0];
 		
 		var formData = new FormData();
 		
 		formData.append("file", file);
-		
+
 		$.ajax({
 			url : '/uploadAjax',
 			data : formData,
 			dataType : 'text',
 			processData : false,
-			dontentType : false,
+			contentType : false,
 			type : 'POST',
 			success : function(data){
 				var fileInfo = getFileInfo(data);
@@ -106,7 +105,7 @@
 		var str = "";
 		
 		$(".uploadedList .delbtn").each(function(index){
-			str += "<input type='hidden' name='files[" + inex + "]' value='" + $(this).attr("href") +"'> ";
+			str += "<input type='hidden' name='files[" + index + "]' value='" + $(this).attr("href") +"'> ";
 		});
 		
 		that.append(str);
