@@ -71,7 +71,7 @@ small {
 			var formData = new FormData();
 			
 			formData.append("file", file);
-			 
+			
 			$.ajax({
 				url : '/uploadAjax',
 				data : formData,
