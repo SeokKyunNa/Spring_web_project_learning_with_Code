@@ -176,8 +176,8 @@
   	
   	<insert id="addAttach">
   		insert into tbl_attach
-  			(fullname)
+  			(fullname, bno)
   		values
-  			(#{fullName})
+  			(#{fullName}, seq_board.currval)
   	</insert>
   </mapper>

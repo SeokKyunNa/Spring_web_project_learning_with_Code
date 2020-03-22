@@ -91,7 +91,6 @@
 			success : function(data){
 				var fileInfo = getFileInfo(data);
 				var html = template(fileInfo);
-				alert(fileInfo);
 				$(".uploadedList").append(html);
 			}
 		});
