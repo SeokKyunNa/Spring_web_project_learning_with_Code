@@ -112,6 +112,24 @@
 		
 		that.get(0).submit();
 	});
+	
+	/* $("#delbtn").on("click", function(event){
+		
+		var that=$(this);
+		
+		$.ajax({
+			url : "deleteFile",
+			type : "post",
+			data : {fileName:$(this).attr("data-src")},
+			dataType : "text",
+			success : function(result){
+				if(result == 'deleted'){
+					alert("deleted");
+					that.parent("div").remove();
+				}
+			}
+		});
+	}); */
 </script>
 
 <%@include file="../include/footer.jsp"%>
