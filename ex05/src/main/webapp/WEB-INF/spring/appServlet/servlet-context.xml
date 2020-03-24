@@ -31,13 +31,24 @@
 		<beans:constructor-arg value="D:\\zzz\\upload"></beans:constructor-arg>
 	</beans:bean>	
 	
+	<!-- SampleInterceptor -->
 	<beans:bean id="sampleInterceptor" class="org.zerock.interceptor.SampleInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
-			<mapping path = "/doA"/>
-			<mapping path = "/doB"/>
+			<mapping path="/doA"/>
+			<mapping path="/doB"/>
 			<beans:ref bean="sampleInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<!-- LoginInterceptor -->
+	<beans:bean id="loginInterceptor" class="org.zerock.interceptor.LoginInterceptor"></beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	</interceptors>
 	

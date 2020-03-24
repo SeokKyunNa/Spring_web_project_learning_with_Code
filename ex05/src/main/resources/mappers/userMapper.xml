@@ -7,11 +7,11 @@
 
 	<select id="login" resultType="UserVO">
 		select
-			uid, upw, uname
+			"UID", upw, uname
 		from
 			tbl_user
 		where
-			uid = #{uid} and upw = #{uwp}
+			"UID" = #{uid} and upw = #{upw}
 	</select>
 	
 </mapper>

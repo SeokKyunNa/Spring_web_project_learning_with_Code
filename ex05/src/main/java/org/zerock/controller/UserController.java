@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.zerock.domain.UserVO;
@@ -19,7 +20,7 @@ public class UserController {
 	private UserService service;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	private void loginGET() {
+	private void loginGET(@ModelAttribute("dto") LoginDTO dto) {
 
 	}
 	
