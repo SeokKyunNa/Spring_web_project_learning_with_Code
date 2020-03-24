@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- AOP의 설정을 통한 자동적인 Proxy 객체 설정을 위한 설정 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>	
+	
+	<!-- org.zerock.service 자동 인식을 위한 설정 -->
+	<context:component-scan base-package="org.zerock.persistence"></context:component-scan>
+	<context:component-scan base-package="org.zerock.service"></context:component-scan>
+	<context:component-scan base-package="org.zerock.aop"></context:component-scan>
+	
+	<!-- XML 방식으로 AOP 기능을 설정할때 사용 -->
+	<aop:config>
+	</aop:config>
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> -->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+  		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xepdb1" />
+		<property name="username" value="ZEROCK" />
+		<property name="password" value="zerock12#" />
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- @Transactional 애노테이션을 위한 설정 -->
+	<tx:annotation-driven/>		
+	
+</beans>
