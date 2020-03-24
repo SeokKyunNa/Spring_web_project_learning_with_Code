@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.zerock.controller" />
+	<context:component-scan base-package="org.zerock.controller" />
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"></beans:property>
@@ -30,5 +30,15 @@
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg value="D:\\zzz\\upload"></beans:constructor-arg>
 	</beans:bean>	
+	
+	<beans:bean id="sampleInterceptor" class="org.zerock.interceptor.SampleInterceptor"></beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path = "/doA"/>
+			<mapping path = "/doB"/>
+			<beans:ref bean="sampleInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>
