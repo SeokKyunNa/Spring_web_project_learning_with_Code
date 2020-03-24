@@ -113,23 +113,26 @@
 		that.get(0).submit();
 	});
 	
-	/* $("#delbtn").on("click", function(event){
+	/* 첨부 파일 삭제 */
+	$(".uploadedList").on("click", ".delbtn", function(event){
 		
-		var that=$(this);
+		event.preventDefault();
+		
+		var that = $(this);
 		
 		$.ajax({
-			url : "deleteFile",
+			url : "/deleteFile",
 			type : "post",
-			data : {fileName:$(this).attr("data-src")},
+			data : {fileName:$(this).attr("href")},
 			dataType : "text",
 			success : function(result){
 				if(result == 'deleted'){
-					alert("deleted");
-					that.parent("div").remove();
+					that.closest("li").remove();
 				}
 			}
 		});
-	}); */
+	});
+
 </script>
 
 <%@include file="../include/footer.jsp"%>

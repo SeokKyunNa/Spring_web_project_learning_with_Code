@@ -44,19 +44,21 @@
 	</div>
 	<!-- /.box-body -->
 	
+	<div class="box-footer">
+		<div>
+			<hr>
+		</div>
+			
+		<ul class="mailbox-attachments clearfix uploadedList">
+		</ul>
+			
+		<button type="submit" class="btn btn-primary">SAVE</button>
+		<button type="submit" class="btn btn-warning">CANCEL</button>
+	</div>
+	
 </form>
 
-<div class="box-footer">
-	<div>
-		<hr>
-	</div>
-		
-	<ul class="mailbox-attachments clearfix uploadedList">
-	</ul>
-		
-	<button type="submit" class="btn btn-primary">SAVE</button>
-	<button type="submit" class="btn btn-warning">CANCEL</button>
-</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
@@ -100,6 +102,8 @@
 			});
 			
 			that.append(str);
+			
+			console.log(str);
 			
 			that.get(0).submit();
 		});
