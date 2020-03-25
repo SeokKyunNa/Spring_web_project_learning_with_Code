@@ -13,5 +13,23 @@
 		where
 			"UID" = #{uid} and upw = #{upw}
 	</select>
+
+	<update id="keepLogin">
+		update
+			tbl_user
+		set
+			sessionKey = #{sessionId}, sessionLimit = #{next}
+		where
+			"UID" = #{uid}
+	</update>	
+	
+	<select id="checkUserWithSessionKey" resultType="UserVO">
+		select
+			*
+		from
+			tbl_user
+		where
+			sessionKey = #{value}
+	</select>
 	
 </mapper>
