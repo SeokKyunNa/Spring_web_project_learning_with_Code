@@ -15,6 +15,7 @@ public class SampleMapperTest {
 	@Inject
 	private SampleMapper mapper;
 	
+	/*
 	@Test
 	public void testTime() {
 		
@@ -22,5 +23,14 @@ public class SampleMapperTest {
 		
 		System.out.println(mapper.getTime());
 		
+	}
+	*/
+	
+	@Test
+	public void testMail() {
+		
+		String email = mapper.getEmail("user00",  "user00");
+		
+		System.out.println(email);
 	}
 }
