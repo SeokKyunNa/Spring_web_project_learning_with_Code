@@ -15,22 +15,44 @@ public class SampleMapperTest {
 	@Inject
 	private SampleMapper mapper;
 	
-	/*
 	@Test
 	public void testTime() {
 		
 		System.out.println(mapper.getClass().getName());
 		
 		System.out.println(mapper.getTime());
+		System.out.println();
 		
 	}
-	*/
-	
+
 	@Test
 	public void testMail() {
 		
 		String email = mapper.getEmail("user00",  "user00");
 		
 		System.out.println(email);
+		System.out.println();
+		
 	}
+	
+	@Test
+	public void testUserName() {
+		
+		String name = mapper.getUserName("user00", "user00");
+		
+		System.out.println(name);
+		System.out.println();
+		
+	}
+	
+	@Test
+	public void testSearch() {
+		
+		String query = mapper.search("id", "user00");
+		
+		System.out.println(query);
+		System.out.println();
+		
+	}
+	
 }
