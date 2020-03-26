@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 
 <script type="text/javascript">
-	self.location = "/";
+	self.location = "/sboard/list";
 </script>
