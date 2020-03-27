@@ -1,1 +1,0 @@
-<img src='./upload/qna/${qna_body_img}' width="500px" height="auto"/>
