@@ -31,7 +31,7 @@
 			});
 	});
 	
-	$(".pageination li a").on("click", function(event){
+	$(".pagination li a").on("click", function(event){
 		
 		event.preventDefault();
 		
